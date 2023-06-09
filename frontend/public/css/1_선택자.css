@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* css 주석 */
+
+/* 1. 모든 곳에 적용 */
+*{color:blue;}
+
+/* 2. h4 태그에 스타일 적용*/
+h4{color: yellow;}
+
+/* class 명이 'text1' 인 태그에 스타일 적용 */
+.text1{color: green;}
+
+/* id 명이 'text2'인 태그에 스타일 적용*/
+#text2{color: red;}

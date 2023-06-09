@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.bookimg{
+		width: 300px; /* 이미지 가로 사이즈 */
+}
+
+.titleno{
+	font-size: 30px;
+	color: orange;
+}
+
+.content {
+	background-color: #0F6878; /* 배경색 */
+	color: white;	/* 글꼴 색 */
+	padding: 20px; /* 안쪽 여백 */
+	width: 400;
+	
+}
+.fontc{
+	color: orange;
+}

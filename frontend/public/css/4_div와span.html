@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="4_div와span.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 
+	<div> : block 요소
+		1. 한줄 차지
+		2. display : block
+		div, h1, p, ul, ol ,li 등
+	  vs
+	<span> : inline 요소
+		1. 같은 줄에 적용
+		2. display : inline
+		span, a등등
+		
+	display 속성 
+		1. display : inline; 기본값으로 사용되는 태그 
+		
+
+ -->
+	<!-- 1. span 태그가 기본값일 경우 inline / 크기[내용 크기만큼 자동] 설정 불가능 -->
+	<div> 글자1 <span class="s1">안녕하세요</span> 글자2</div>
+	
+	<!-- 2. span 태그가  block / 크기[width/height] 설정 가능 -->
+	<div> 글자1 <span class="s2">안녕하세요</span> 글자2</div>
+	
+	<!-- 3. span 태그가  inline-block /크기[width/height] 설정 가능 -->
+	<div> 글자1 <span class="s3">안녕하세요</span> 글자2</div>
+	
+	<!-- 4. span 태그가  display: none; 숨김 -->
+	<div> 글자1 <span class="s4">안녕하세요</span> 글자2</div>
+	
+	<!-- 1. div 태그가 display : inline; -->
+	글자<div class="d1">안녕하세요</div>글자2
+	
+	<!-- 2. div 태그가 display : block; -->
+	글자<div class="d2">안녕하세요</div>글자2
+	
+	<!-- 3. div 태그가 inline-block -->
+	글자<div class="d3">안녕하세요</div>글자2
+	
+	<!-- 4. div 태그가 display: none; -->
+	글자<div class="d4">안녕하세요</div>글자2
+</body>
+</html>
