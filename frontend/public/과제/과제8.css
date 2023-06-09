@@ -1,0 +1,105 @@
+@charset "UTF-8";
+*{
+	font-family: "yoon윤고딕";
+}
+.kakao{
+	text-align: center;
+	font-weight: normal;
+		}
+.k2{
+	border: solid 1px #eeeeee;
+	width: 450px; margin: 0 auto;	
+	text-align: center;
+}
+.id1{
+	border-style: none;
+	border-bottom: solid 2px #CFCFCF;
+	width: 350px; height: 30px;
+	font-size: 12px;
+	margin-top: 30px;
+}
+.id2{
+	border-style: none;
+	border-bottom: solid 2px #CFCFCF;
+	width: 350px; height: 30px;
+	font-size: 12px;	
+}
+
+.login{
+	text-align: left;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	
+}
+
+span{
+	text-align: left;
+	font-size: 12px;
+	color: gray;
+	
+} 
+
+.box{
+	border: solid 1px #FEE500;
+	background-color: #FEE500;
+	width: 350px; height: 35px;
+	border-radius: 3px;
+	font-size: 12px;
+	margin-bottom: 10px;
+	
+}
+.box2{
+	border: solid 1px #E8E8E8;
+	background-color: #E8E8E8;
+	width: 350px; height: 35px;
+	border-radius: 3px;
+	font-size: 12px;
+	margin-bottom: 15px;
+}
+
+.box3{
+	font-size: 10px; 
+	border-style: none;
+	background-color: window;
+}
+
+.box4{
+	padding-left: 170px;
+	padding-bottom: 40px;
+}
+
+.etc{
+	margin: auto;
+	
+	padding-top: 30px;
+}
+
+.etc2{
+	border-style: none;
+	background-color: window;
+	font-size: 10px;
+	
+}
+.etc3{
+	font-weight: bold;
+	border-style: none;
+	background-color: window;
+	font-size: 10px;
+}
+ .language{
+ 	border-style: none;
+	background-color: window;
+	font-size: 10px;
+ }
+ 
+ .etc4 {
+ 	font-size: 5px;
+ 	margin: auto;
+ 	color: #CFCFCF;
+ }
+ 
+ .etc5{
+ 	font-weight: bold;
+ 	
+ 	}
