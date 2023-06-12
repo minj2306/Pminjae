@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.container{
+		display: flex;
+}
+
+.box{
+	width: 10%; height: 50%;
+	background-color: black;
+	color: white;
+	border: 1px solid white;
+}
+
+/* 정렬 */
+#flexbox1{
+		justify-content: flex-start; /* 기본값 */
+}
+
+#flexbox2{
+		justify-content: flex-end; /* 오른쪽부터 배치 */
+}
+
+#flexbox3{
+		justify-content: center; /* 가로가운데 */
+}
+
+#flexbox4 {
+		justify-content: space-between; /* 자동 균등배치 양쪽여백X */
+}
+
+#flexbox5{
+		justify-content: space-around;	/* 자동 균등배치 양쪽여백(50%) */
+}
+
+#flexbox6{
+		justify-content: space-evenly; /* 자동 균등배치 양쪽여백(100%) */
+}
