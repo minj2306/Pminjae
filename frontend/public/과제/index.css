@@ -48,12 +48,66 @@ li{list-style-type: none;}
 	margin: 30px 0px;
 }
 
+/* 본문 사이즈, 배치 방법 */
 #content{
 	width: 1200px;
 	margin: 0 auto;
 	display: flex;
+	margin-top: 20px;
 }
 
+/* 상단  본문 배치방법, 사이즈 */
 .top_content{
-	width: 400px;
+	display:flex;
+	width: 450px;
+}
+/* 왼쪽본문 텍스트 위치 정렬 */
+.top_text{margin-left: 40px;}
+
+/* 왼쪽본문 텍스트 글자간 간격 */
+.top_text li{margin-bottom: 10px;}
+
+/* 왼쪽본문 텍스트 타이틀 굵기, 글자 크기 */
+.t1{
+	font-size:20px;
+	font-weight: bold;
+}
+
+/* 하단 본문 뒷 배경 */
+.under_c{
+	width: 100%; height:350px;
+	background-color: #F9F9F9;
+	background-repeat:repeat;
+	margin-top: 40px;
+}
+
+/* 하단 본문 내용 공간 */
+.uc1{
+	width:1200px;
+	display: flex;
+	justify-content: center;
+	padding-top: 55px;}
+
+/* 하단 본문 내용 각각 공간과 배경 */
+.uc1 div{
+	width: 250px; height:240px;
+	background-color: white;
+	
+}
+
+/* 하단 본문 내용의 사진 크기 */
+.uc1 img{width: 250px;}
+
+.uc_t_h span{
+	font-weight: bold;
+}
+
+.uc1_text {
+	font-size: 13px;
+}
+
+.uc_t_h{
+	margin-top: 5px;
+	margin-left: 5px;
+	padding-bottom: 10px;
 }
