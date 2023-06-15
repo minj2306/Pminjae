@@ -6,6 +6,139 @@
 <link href="reservation.css" rel="stylesheet">	
 </head>
 <body>
-reservation
+	<div id="wrap"><!-- 웹 전체 내용 -->
+		<div id="haeder"><!-- 헤더시작 -->
+			<div class="h_logo"> <!-- 헤더로고 -->
+				<a href="http://192.168.17.34:8080/frontend/%EA%B3%BC%EC%A0%9C/index.html">
+					<h3><span class="the">THE</span> <span class="studio">스튜디오</span></h3>
+				</a>
+			</div><!-- 헤더로고 끝 -->
+			<div><!-- 헤더메뉴 -->
+				<ul class="main_menu">
+					<li>
+						<a href="http://192.168.17.34:8080/frontend/%EA%B3%BC%EC%A0%9C/img/intro.html">
+							스튜디오 소개
+						</a>
+					</li>
+					<li>
+						<a href="http://192.168.17.34:8080/frontend/%EA%B3%BC%EC%A0%9C/reservation.html">
+							스튜디오 예약
+						</a>
+					</li>
+					<li><a>블로그</a></li>
+					<li><a>포토 갤러리</a></li>
+					<li><a>오시는 길</a></li>
+				</ul>
+			</div><!-- 헤더메뉴 끝 -->
+		</div><!-- 헤더 끝 -->
+		
+		<div class="main_logo_2"> <!-- 메인 로고 공간  -->
+			<div> <!-- 메인로고 이미지 -->
+				<img id="main_img_2" src="">
+			</div><!-- 메인로고 이미지 끝 -->
+			<div class="rental">
+				<ul>
+					<li class="st_intro">스튜디오 예약 </li>
+					<li>사전에 인터넷으로 예약해주세요</li>
+				</ul>
+			</div>
+		</div>
+		<div id="reservation"> <!--스튜디오 예약 내용-->
+				<div class="re_schedule"> <!--스케줄표-->
+					<h5>예약 날짜를 선택해 주세요.</h5></br>
+						<input class="button_top" type ="button" value="<">
+							<input class="button_top" type="month" value="2021-09" min="2021-09" max="2021-09">
+						<input class="button_top" type ="button" value=">">	
+					<div class="re_date">
+					<table class="re_number" border="1">
+						<tr>
+							<th><span class="rest_day first_line">sun</span></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+						</tr>
+							
+						<tr>
+							<td><span class="rest_day">29</span></td> <td> 30 </td> <td> 31 </td> <td> 1 </td> <td> 2 </td> <td> 3 </td> <td> 4 </td>
+						</tr>
+						
+						<tr>
+							<td><span class="rest_day">5</span></td> <td> 6 </td> <td> 7 </td> <td> 8 </td> <td> 9 </td> <td> 10 </td> <td> 11 </td>
+						</tr>
+						
+						<tr>
+							<td><span class="rest_day">12</span></td> <td> 13 </td> <td> 14 </td> <td> 15 </td> <td> 16 </td> <td> 17 </td> <td> 18 </td>
+						</tr>
+						
+						<tr>
+							<td><span class="rest_day">19</span></td> <td> 20 </td> <td> 21 </td> <td> 22 </td> <td> 23 </td> <td> 24 </td> <td> 25 </td>
+						</tr>
+						
+						<tr>
+							<td><span class="rest_day">26</span></td> <td> 27 </td> <td> 28 </td> <td> 29 </td> <td> 30 </td> <td></td> <td></td>
+						</tr>
+					  </table>
+					 </div>
+				</div> 	<!--스케줄표 끝-->
+				<div class="re_inf"> <!--예약 안내-->
+					<div class="inf">
+					<h5 class="re_title">예약 안내</h5>
+						<ul class="re_text">
+							<li>1일전 예약해 주세요.</li>
+							<li>사흘 일주일 이후에 취소는 환불됩니다.</li>
+							<li>이틀 시간은 촬영과 줄이 모두 포함입니다.</li>
+							<li>일요일은 휴일입니다.</li>
+						</ul>
+					</div>
+					
+					<div class="pay">
+					<h5 class="re_title">이용 요금</h5>
+						<ul class="re_text">
+							<li>1시간 : 30,000원</li>
+							<li>밤일 대여 : 100,000원</li>
+							<li>전일 대여 : 200,000원</li>
+							<span class="green_text">※ 자세한 내용은 전화(1588-1588)로 문의주세요.<span>
+						</ul>
+					</div>		
+					</div>
+				</div>	<!--예약 안내 끝-->
+	<div id="footer">	<!--푸터-->
+			<div class="ft_context"> <!--푸터 본문-->
+				<div class="ft_left"> <!--푸터 좌측 배너-->
+					<ul class="ft_item">
+						<li class="ft_call">고객센터</li>
+						<li><h3>Tel: 1588-1588</h3></li>
+					</ul>
+				</div>  <!--푸터 좌측 배너 끝-->
+				<div class="ft_center"> <!--푸터 가운데 배너-->
+					<div class="ft_top">
+						<a href="#">회사소개</a> <span class="aline">|</span>
+						<a href="#">개인정보처리방침</a> <span class="aline">|</span>
+						<a href="#">이용약관</a> <span class="aline">|</span>
+						<a href="#">제휴안내</a> <span class="aline">|</span>
+				</div>
+					<ul class="ft_bottom">
+						<li class="ft_bot">주소: 경기도 용인시 수지구 점펄로 123 </li>
+						<li class="ft_bot">e-mail: Photo@korea.com</li>
+						<span class="ft_bot">COPYRIGHT ⓒ 2021 The 스튜디오. ALL RIGHTS RESERVED.</span>
+					</ul>
+				</div>	<!--푸터 가운데 배너 끝-->
+					<div class="ft_right"> <!--푸터 오른쪽 배너-->
+						<div class="ft_facebook">
+							<a href="https://ko-kr.facebook.com/">
+								<img src="img/facebook.png">
+							</a>
+						</div>
+						<div class="ft_blog">
+							<a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0">
+								<img src="img/blog.png">
+							</a>
+						</div>
+						<div class="ft_instagram">
+							<a href="https://www.instagram.com/">
+								<img src="img/instagram.png">
+							</a>
+						</div>	
+					</div> <!--푸터 오른쪽 배너 끝-->
+				</div>	<!--푸터 본문 끝-->
+			</div> 	<!--푸터 끝  -->		
+	</div> <!-- 웹 전체내용  -->
 </body>
 </html>
