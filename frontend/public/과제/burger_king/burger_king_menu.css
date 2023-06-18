@@ -179,11 +179,19 @@ a{
 	text-align: center;
 	font-weight: bold;
 	font-size: 21px;
+	position: relative;
 	
 }
 
+/* 뉴 마크 크기, 위치 설정  */
+.new_burger{
+	width:57px;
+	position: absolute;
+	top:-10px; left: 29px; 
+	z-index: 1;
+}
 /* 버거 이미지 크기 설정 */
-.burger_item img{width: 220px;}
+.burger_set img{width: 220px;}
 
 /* 메뉴 글자 여백 */
 .burger_set{margin-bottom: 20px;}

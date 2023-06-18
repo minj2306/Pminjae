@@ -180,9 +180,19 @@ a{
 	font-weight: bold;
 	font-size: 21px;
 	text-align: center;
+	position: relative;
 	
 }
+
+/* 뉴 마크 크기, 위치 설정  */
+.new_burger{
+	width:57px;
+	position: absolute;
+	top:-10px; left: 29px; 
+	z-index: 1;
+}
+
 /* 버거 이미지  크기 */
-.burger_item img{width: 220px;}
+.burger_set img{width: 220px;}
 /* 메뉴판 폰트 여백 */
 .burger_set{margin-bottom: 20px;}
