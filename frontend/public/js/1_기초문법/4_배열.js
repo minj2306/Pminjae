@@ -68,9 +68,9 @@ document.write(배열명)
 document.write('<h3> 과일개수 : ' + 배열명.length + '</h3>') 
 document.write('<ol>')// HTML 문자처리
 document.write('<li>' + 배열명[0] + '</li>') //변수or배열 문자처리x
-document.write('<li>' + 배열명[1] + '</li>') //변수or배열 문자처리x
-document.write('<li>' + 배열명[2] + '</li>') //변수or배열 문자처리x
-document.write('<li>' + 배열명[3] + '</li>') //변수or배열 문자처리x
+document.write('<li>' + 배열명[1] + '</li>') 
+document.write('<li>' + 배열명[2] + '</li>') 
+document.write('<li>' + 배열명[3] + '</li>') 
 document.write('</ol>')
 
 // 예제4 : 인덱스를 이용한 데이터 수정
