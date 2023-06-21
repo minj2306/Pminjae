@@ -76,11 +76,35 @@ let int5 = Number(prompt("정수14"));
 let int6 = Number(prompt("정수15"));     
 let int7 = Number(prompt("정수16"));
 
-if(int4 > int5){}    
+if(int4 > int5){
+	let temp1 = int4; 
+	int4 = int5; 
+	int = tem
+}      
 
+//문제 6 : 점수를 입력받아 점수 90점이상 합격 출력 아니면 탈락 출력 
+let 점수 = Number(prompt("점수를 입력 "))
+if(점수>=90){console.log('합격 ')}
+else{console.log("탈락 ")}
 
+/*문제 7 : 점수를 입력받아 점수 90점이상 A등급 출력 
+                            80점이상 B등급 출력 
+                            70점이상 C등급 출력  
+                            그외 재시험*/
+let 점수1 = Number(prompt("점수를 입력 "))
+if(점수1>=90){console.log('A등급 ')}
+else if(점수1>=80){console.log( 'B등급 ')}
+else if(점수1>=70){console.log( 'C등급 ')}
+else{console.log('재시험 ')}
 
+/*문제 8 : 아이디와 비밀번호 입력받기 
+             회원아이디가 admin 이고 비밀번호가 1234 이면 로그인 성공 출력 
+                                     아니면 로그인실패 출력*/
+let 아이디 = prompt("아이디 입력 ")
+let 비번 = prompt("비밀번호 입력 ")
 
-
-                                
+if(아이디=='admin'){
+	if (비번=='1234'){console.log( ' 로그인 성공 ')}
+	else{console.log( ' 비밀번호 틀림 ')} }
+else{console.log('아이디 틀림 ')}                            
                                      
