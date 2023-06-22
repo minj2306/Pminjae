@@ -188,7 +188,7 @@ for(let i=1 ; i<=line6; i++){
 	for(let t=1; t<=i-1 ; t++){
 		output+=' '
 	}
-	for(let s=1; s<=i; s++){
+	for(let s=1; s<=line6; s++){
 		output+='*'
 	}
 	output+='\n'
