@@ -188,8 +188,86 @@ for(let i=1 ; i<=line6; i++){
 	for(let t=1; t<=i-1 ; t++){
 		output+=' '
 	}
-	for(let s=1; s<=line6; s++){
+	for(let s=1; s<=line6*2-(i*2-1); s++){
 		output+='*'
 	}
 	output+='\n'
 }console.log(output)
+/*
+문제9) 입력받은 줄 수 만큼 * 출력  [ ex) 10 ]
+    *
+   ***
+  *****
+ *******
+*********
+*********
+ *******
+  *****
+   ***
+    *
+*/
+output=``
+let line7=prompt('문제9')
+for(let i=1 ; i<=line7/2; i++){
+	for(t=1 ; t<=line7/2-i; t++){
+		output+=' '
+	}
+	for(let s=1 ; s<=i*2-1; s++){
+		output+='*'
+	}
+	output+='\n'
+}
+for(let ii=1 ; ii<=line7/2; ii++){
+	for(let tt=1; tt<=ii-1 ; tt++){
+		output+=' '
+	}
+	for(let ss=1; ss<=(line7/2)*2-(ii*2-1) ; ss++){
+		output+='*'
+	}
+	output+='\n'
+}console.log(output)
+/*
+문제10) 입력받은 줄 수 만큼 * 출력  [ ex) 7 ]
+*     *
+ *   *
+  * *
+   *
+  * *
+ *   *
+*     *
+
+*/
+output=''
+let line8=prompt('문제10')
+for(let i=1; i<=line8/2; i++){
+	for(let t=1; t<=i-1; t++){
+		output+=' '
+	}
+	for(let s=1; s<=i/i; s++){
+		output+='*'
+	}
+	for(let t1=1; t1<=line8-i*2; t1++){
+		output+=' '
+	}
+	for(let s1=1; s1<=i/i ; s1++){
+		output+='*'
+	}
+	output+='\n'
+}
+for(let ii=1; ii<=line8/2; ii++){
+	for(let tt=1; tt<=line8/2-ii; tt++){
+		output+=' '
+	}
+	for(let ss=1; ss<=ii/ii; ss++){
+		output+='*'
+	}
+	for(let tt1=1; tt1<=ii*2-1; tt1++){
+		output+=' '
+	}
+	for(let ss1=1; ss1<=ii/ii; ss1++){
+		output+='*'
+	}
+	
+	output+='\n'
+}
+console.log(output)
