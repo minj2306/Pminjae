@@ -20,15 +20,14 @@ function join( ){
 	console.log(comid);
 	console.log(compw);
 	//배열등록및 유효성 검사
-	if(idInput.length < 8 && passwordInput < 8){
+	if(comid.length < 8 || compw.length < 8){
 			alert('아이디 비밀번호는 8글자 이상이어야 합니다.'); }
-	 
-	
+	else{joinid.push(idInput);
+		joinpassword.push(passwordInput); 
+		alert('회원가입 성공!')}
+	 console.log(joinid)
+	console.log(joinpassword )
 	//입력값 초기화
 	idInput.value=''
 	passwordInput.value=''
-	
-	
-	
-	
 }
