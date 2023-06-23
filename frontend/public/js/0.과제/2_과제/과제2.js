@@ -19,7 +19,9 @@ function join( ){
 	let compw = passwordInput.value;
 	console.log(comid);
 	console.log(compw);
-	//배열등록
+	//배열등록및 유효성 검사
+	if(idInput.length < 8 && passwordInput < 8){
+			alert('아이디 비밀번호는 8글자 이상이어야 합니다.'); }
 	 
 	
 	//입력값 초기화
