@@ -6,14 +6,21 @@
 <link href="과제2.css" rel="stylesheet">
 </head>
 <body>
-
-<div><!-- 회원가입 시작 -->
-	<input type="text" placeholder="id" class="id">
-	<input type="password" placeholder="pw" class="password">
-	<input onclick="join()" type="button" value="회원가입"> 
+<div id = wrap>
+	<div id='join_login'>
+		<div class='join'><!-- 회원가입 시작 -->
+			<input type="text" placeholder="id" class="id">
+			<input type="password" placeholder="pw" class="password">
+			<input onclick="join()" type="button" value="회원가입" class=""> 
+		</div>
+		
+		<div class='login'>
+			<input type="text" placeholder="id" class="iogin_id">
+			<input type="password" placeholder="pw" class="login_pw">
+			<input onclick="log_in" type="button" value="로그인 ">
+		</div>
+	</div>
 </div>
-
-
 
 
 
