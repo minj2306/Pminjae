@@ -34,7 +34,7 @@ function join( ){
 		console.log(joinpassword)
 }
 
-function log_in( ){
+function log_in( ){ 
 	 let loginid = document.querySelector('.login_id').value
 	 let loginpw = document.querySelector('.login_pw').value
 	 
