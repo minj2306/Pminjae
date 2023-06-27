@@ -14,9 +14,35 @@
       플레이어2 이겼을때 경우의수 ' 플
  */
 //문제11
+let 정수1 = Number(prompt('정수1'))
+let 정수2 = Number(prompt('정수2'))
+let 정수3 = Number(prompt('정수3'))
 
+let max=정수1
+max= max<정수2 ? 정수2 : max
+max= max<정수3 ? 정수3 : max
+
+let min=정수1
+min= min<정수2 ? min : 정수2
+min= min<정수3 ? min : 정수3
+
+let mid = 정수1+정수2+정수3-max-min
+
+console.log(min)
+console.log(mid)
+console.log(max)
 
 //문제12
 
 let 플레이어1 = prompt('플레이어1')
 let 플레이어2 = prompt('플레이어2')
+
+if(플레이어1 == 0 && 플레이어2 == 2 || 
+			플레이어1 == 1 && 플레이어2 == 0 ||
+				플레이어1 == 2 && 플레이어2 == 1)
+	{console.log('플레이어1 승리')}
+
+else if(플레이어1 == 플레이어2 ){
+	console.log('무승부입니다!')
+}
+else{console.log('플레이어2 승리')}
