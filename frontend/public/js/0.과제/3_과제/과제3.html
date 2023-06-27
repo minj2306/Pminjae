@@ -3,26 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="과제3.css" rel="stylesheet">
 </head>
 <body>
 
-<table>
-	<tr>
-		<th>날짜</th> <th>항목</th> <th>금액</th> <th>비고</th>
-	<tr>
-		<td><input type="date"></td>
-	</tr>
-	<tr>
-		<td><input type="date"></td>
-	</tr>
-	<tr>
-		<td><input type="date"></td>
-	</tr>
-	<tr>
-		<th>총합계</th>
-	</tr>
-</table>
+	<!-- 등록 HTML -->
+	<div id="wrap">
+	>
+		<div class="save">
+		<h1>가계부</h1>
+			<input class="input date" id="dateInput" type="date"><br/>	
+			<input class="input name" id="nameInput" type="text" placeholder="항목"><br/>
+			<input class="input money" id="moneyInput" type="text" placeholder="금액"><br/>
+			<button onclick="등록()">등록</button>		
+		</div>
+		
+		<!-- 출력 HTML -->
+		<div class="output">
+			<table class="outputTable">
+				
+			</table>
+		</div>
+	</div>
 
-
+<script src="과제3.js" type="text/javascript"></script>
 </body>
 </html>
