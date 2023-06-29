@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#wrap{display: flex;}
+
+.write_page{
+	width:300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.write_page input{margin-bottom: 20px;}
+
+.write_page textarea{
+	height: 200px;
+	margin-bottom: 20px;	
+}
