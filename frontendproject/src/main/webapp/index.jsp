@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<!-- 다른 JSP파일 호춣 -->
+	<!-- 다른 JSP파일 호출 -->
 	<%@include file="header.jsp" %>
 	
 	대문입니다.
