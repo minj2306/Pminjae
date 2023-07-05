@@ -18,7 +18,7 @@
 			<img class="himg" src="../img/himg1.png">
 			<!-- 카테고리 -->
 			<ul class="categorymenu">
-				
+				<!-- 카테고리 리스트 출력 구역 -->
 			</ul>
 			
 		</div><!-- 헤더 끝 -->
@@ -42,24 +42,20 @@
 				<div class="cartcontent"><!-- 제품개수/가격 , 제품정보 -->
 	
 					<div class="carttop"><!-- 제품개수/가격 출력 -->
-						<div>카트 <span class="ccount">3</span> </div>	
-						<div>총 주문금액 <span class="ctotal">31,000</span></div>
+						<div>카트 <span class="ccount">0</span> </div>	
+						<div>총 주문금액 <span class="ctotal">0</span></div>
 					</div><!-- 제품개수/가격 출력 끝-->
 					
 					<div class="cartbottom"><!-- 제품정보 출력 -->
-						<div class="citem"><!-- 카트내 제품 1개 -->
-							<div class="iname">더블비프불고기버거</div>
-							<div class="iprice">12,000원</div>
-							<span class="icencle"> X </span>
-						</div>
+						
 					</div><!-- 제품정보 출력 끝 -->
 
 				</div><!-- 제품개수/가격 , 제품정보 끝 -->
 				
 				<div class="cartbtn"><!-- 버튼구역 -->
 	
-					<button class="cenclebtn">취소하기</button>
-					<button class="orderbtn">주문하기</button>
+					<button onclick="cartCancel()" class="cenclebtn">취소하기</button>
+					<button onclick="productOrder()" class="orderbtn">주문하기</button>
 
 				</div><!-- 버튼구역 끝 -->
 
