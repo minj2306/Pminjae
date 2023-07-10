@@ -68,6 +68,15 @@
 	padding: 15px; border-radius:30px; 
 }
 
+.content{
+	background-color: red; color:white;
+	margin: 3px; padding: 3px; font-size: 10px;
+	display: block;/* span태그의 기본값은 inline 이기 떄문에 사이즈 적용x  */
+	/* 만약에 해당 구역보다 내용물(택스트)이 더 커지면...표시해서 잘림*/
+	overflow: hidden;
+	white-space: nowrap;/* 만약에 텍스트 커지면 자동 줄바꿈 해제 */
+	text-overflow: ellipsis;/* ellipsis: 넘친부분을 ...표시 */
+}
 
 
 

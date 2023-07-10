@@ -31,10 +31,12 @@
 	<div class="modalwrap"><!-- 모달 전체구역 -->
 		<div class="modal"><!-- 모달 상자 -->
 			<h3> 일정추가</h3>
-			<textarea rows="5" cols="10"></textarea>
+			<input class="color" type="color">
+			<div class="date">2023-07-10</div>
+			<textarea class="contentInput" rows="5" cols="10"></textarea>
 			<div class="bodalbtns">
-				<button>일정등록</button>
-				<button onclick="closeModal()">닫기</button>
+				<button onclick="onWrite()" type="button">일정등록</button>
+				<button onclick="closeModal()" type="button">닫기</button>
 			</div>
 		</div>	
 	</div>
