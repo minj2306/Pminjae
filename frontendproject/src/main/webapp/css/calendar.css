@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* 캘린더 전체구역 */
+.wrap{
+	width: 1200px;
+	margin: 50px auto;
+}
+
+/* 캘린더 상단 메뉴 */
+.caltop{
+	display: flex;
+	justify-content: center;
+}
+
+/* 캘린더 상단 메뉴 버튼들 */
+.caltop button{
+	background-color: white;
+	border: none;
+	font-size: 25px; color: #AFD6EA;
+	cursor: pointer; /* 커서(마우스) 모양 */
+}
+
+.caltop h3{
+	margin: 0 15px;
+}
+
+.calender{
+	display: flex;
+	flex-wrap: wrap; /* 하위요소의 사이즈가 부족할때 자동 줄바꿈 */
+}
+
+/* 캘린더 1개 구역 */
+.calender div{
+	width: 14%;
+	border: 1px solid #eeeeee ;
+	height: 100px;
+}
+
+.week{
+	height: 30px !important;
+	background-color: #e8e8e8;
+	font-size: 18px;
+	text-align: center;
+}
+
+.sunday{
+	background-color: red; color: white;
+}
+
+/* 모달 전체 구역 */
+.modalwrap{
+	position: fixed;
+	width: 100%; height: 100%; /* 전체 구역 다씀 */
+	top: 0px;
+	background-color: rgba( 0, 0 ,0 , 0.3 );/* 모달 켜지면 뒤에 흐릿하게 보임 */
+	/* rgb : 0~255 색상조합 /rgba: 투명도 포함 */
+	/* 자식요소 -> 내용 박스 가운대로 */
+	display: none;
+	justify-content: center;
+	align-items: center;
+	/* display 이용한 모달 끄기 (none) / 켜기(flex) */
+}
+
+/* 모달 내욜 박스 구역 */
+.modal{
+	background-color: white;
+	width: 500px; height: 300px;
+	padding: 15px; border-radius:30px; 
+}
+
+
+
+
+
+
+
+
