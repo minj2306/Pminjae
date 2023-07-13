@@ -38,4 +38,3 @@ public class Ex1_변수 {//class s
  	초기값 : 변수 선언시 저장할 데이터
  
  */
-*/
