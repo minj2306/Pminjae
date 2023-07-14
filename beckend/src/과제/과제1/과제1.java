@@ -20,7 +20,7 @@ public class 과제1 {
 		 	
 		 	논리	  boolean
 		 	
-		 문제 4
+		 문제 4 
 		 	풀이	: 
 		 	답	: 타입 		int , double
 		 		  변수이름 	age , price
