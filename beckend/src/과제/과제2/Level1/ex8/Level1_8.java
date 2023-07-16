@@ -17,22 +17,58 @@ public class Level1_8 {
 		
 		/* 문제풀이 위치 */
 		System.out.print("[1]작성자 : ");
-		output = scanner.next();
+		String writer = scanner.nextLine();
 		System.out.print("[1]방문록 : ");
-		boardlist = scanner.nextLine();
+		String content = scanner.nextLine();
 		
 		System.out.println(header);
-		System.out.println("1\t"+output+"\t"+boardlist);
+		System.out.println("1\t"+writer+"\t"+content);
 		System.out.println(footer);
 		
 		System.out.print("[2]작성자 : ");
-		output = scanner.next();
+		String writer2 = scanner.nextLine();
 		System.out.print("[2]방문록 : ");
-		boardlist = scanner.nextLine();
+		String content2 = scanner.nextLine();
 		
 		System.out.println(header);
-		System.out.println("1\t"+output+"\t"+boardlist);
-		System.out.println("2\t"+output+"\t"+boardlist);
+		System.out.println("1\t"+writer+"\t"+content);
+		System.out.println("2\t"+writer2+"\t"+content2);
+		System.out.println(footer);
+		
+		System.out.print("[3]작성자 : ");
+		String writer3 = scanner.nextLine();
+		System.out.print("[3]방문록 : ");
+		String content3 = scanner.nextLine();
+		
+		System.out.println(header);
+		System.out.println("1\t"+writer+"\t"+content);
+		System.out.println("2\t"+writer2+"\t"+content2);
+		System.out.println("3\t"+writer3+"\t"+content3);
+		System.out.println(footer);
+		
+		System.out.print("[4]작성자 : ");
+		String writer4 = scanner.nextLine();
+		System.out.print("[4]방문록 : ");
+		String content4 = scanner.nextLine();
+		
+		System.out.println(header);
+		System.out.println("1\t"+writer+"\t"+content);
+		System.out.println("2\t"+writer2+"\t"+content2);
+		System.out.println("3\t"+writer3+"\t"+content3);
+		System.out.println("4\t"+writer4+"\t"+content4);
+		System.out.println(footer);
+		
+		System.out.print("[5]작성자 : ");
+		String writer5 = scanner.nextLine();
+		System.out.print("[5]방문록 : ");
+		String content5 = scanner.nextLine();
+		
+		System.out.println(header);
+		System.out.println("1\t"+writer+"\t"+content);
+		System.out.println("2\t"+writer2+"\t"+content2);
+		System.out.println("3\t"+writer3+"\t"+content3);
+		System.out.println("4\t"+writer4+"\t"+content4);
+		System.out.println("5\t"+writer5+"\t"+content5);
 		System.out.println(footer);
 		
 		/* ----------- */

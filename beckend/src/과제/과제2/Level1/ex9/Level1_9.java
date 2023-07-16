@@ -18,7 +18,16 @@ public class Level1_9 {
 		System.out.println("국어\t영어\t수학\t합계\t평균\t3배수\t8배수\t홀짝\t결과");
 		
 		/* 문제풀이 위치 */
-
+		int toTal = kor+eng+mat;
+		float aver = toTal/3;
+		boolean three = toTal%3 == 0 ? true : false ;
+		boolean eight = toTal%8 == 0 ? true : false ;
+		String numB = toTal%2 == 1 ? "홀수" : "짝수" ;
+		String result = (aver >= 65) ? "합격" : "탈락" ;
+		
+		System.out.print(kor+"\t"+eng+"\t"+mat+"\t"+toTal+"\t");
+		System.out.printf("%.1f\t" , aver);
+		System.out.print(three+"\t"+eight+"\t"+numB+"\t"+result);
 		/* ----------- */
 	}
 }

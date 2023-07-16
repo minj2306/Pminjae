@@ -207,7 +207,7 @@ public class 연산20문제 {
 		String iD1 = iD.next();
 		String pW1 = pW.next();
 		
-		String logIn = (iD1 == "admin" && pW1 == "1234") ?
+		String logIn = (iD1.equals("admin") && pW1.equals("1234")) ?
 										"로그인성공" : "로그인실패" ;
 		System.out.println("결과 : "+logIn);
 		
