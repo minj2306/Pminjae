@@ -1,4 +1,4 @@
-package 테스트.Level1.ex8;
+package 과제.과제2.Level1.ex8;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -16,6 +16,24 @@ public class Level1_8 {
 		String output = "";
 		
 		/* 문제풀이 위치 */
+		System.out.print("[1]작성자 : ");
+		output = scanner.next();
+		System.out.print("[1]방문록 : ");
+		boardlist = scanner.nextLine();
+		
+		System.out.println(header);
+		System.out.println("1\t"+output+"\t"+boardlist);
+		System.out.println(footer);
+		
+		System.out.print("[2]작성자 : ");
+		output = scanner.next();
+		System.out.print("[2]방문록 : ");
+		boardlist = scanner.nextLine();
+		
+		System.out.println(header);
+		System.out.println("1\t"+output+"\t"+boardlist);
+		System.out.println("2\t"+output+"\t"+boardlist);
+		System.out.println(footer);
 		
 		/* ----------- */
 	}

@@ -1,4 +1,4 @@
-package 테스트.Level1.ex4;
+package 과제.과제2.Level1.ex4;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +10,15 @@ public class Level1_4 {
 		
 		/* 문제풀이 위치 */
 		String answer= "";
+		answer += "         ,r'\"7\n";
+		answer += "r`-_   ,'  ,/\n";
+		answer += " \\. \". L_r'\n";
+		answer += "   `~\\/\n";
+		answer += "      |\n";
+		answer += "      |";
+		
 		System.out.println( answer );
+		
 		/* ----------- */
 	}
 }

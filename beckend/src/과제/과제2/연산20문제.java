@@ -123,39 +123,110 @@ public class 연산20문제 {
 		System.out.println("사다리꼴 넓이 : "+enD2);
 		*/
 		//------ 문제13 여기에 풀이-------//
+		/*
 		Scanner taLl = new Scanner(System.in);
-		Scanner weIght = new Scanner(System.in); 
-		int taLl_1 = taLl.nextInt();
-		int weIght_1 = weIght.nextInt();
-		
-		int bMi = weIght_1/((taLl_1/100)*(taLl_1/100));
+		short taLl_1 = taLl.nextShort();
+		double weIght = (taLl_1-100)*0.9;
 		System.out.println("키 : "+taLl_1);
-		System.out.println("몸무게 : "+ weIght_1);
-		System.out.println(bMi);
-		
+		System.out.println("표준체중 : "+weIght);
+		*/
 		//------ 문제14 여기에 풀이-------//
-		
-		
+		/*
+		Scanner taLl_2 = new Scanner(System.in);
+		Scanner weIght_2 = new Scanner(System.in); 
+		int taLl2_1 = taLl_2.nextInt();
+		int weIght2_1 = weIght_2.nextInt();
+
+		int bMi = weIght2_1/((taLl2_1/100)*(taLl2_1/100));
+		System.out.println("키 : "+taLl2_1);
+		System.out.println("몸무게 : "+ weIght2_1);
+		System.out.println("bmi : "+bMi);
+		*/
 		//------ 문제15 여기에 풀이-------//
-		
-		
+		/*
+		Scanner inCh = new Scanner( System.in );
+		int inCh1 = inCh.nextInt();
+		double cM = inCh1*2.54;
+		System.out.println(inCh1+" inch");
+		System.out.println(("="+cM)+"cm");
+		*/
 		//------ 문제16 여기에 풀이-------//
+		/*
+		Scanner middle = new Scanner(System.in);
+		float middle1 = middle.nextFloat();
+		Scanner fiNal = new Scanner(System.in);
+		float fiNal1 = fiNal.nextFloat();
+		Scanner evaluAtion = new Scanner(System.in);
+		float evaluAtion1 = evaluAtion.nextFloat();
 		
+		System.out.println("중간고사 : "+middle1);
+		System.out.println("기말고사 : "+fiNal1);
+		System.out.println("수행평가 : "+evaluAtion1);
 		
+		float middle1_1 = middle1*0.3f;
+		float fiNal1_1 = fiNal1*0.3f;
+		float evaluAtion1_1 = evaluAtion1*0.4f;
+		float toTal = middle1_1+fiNal1_1+evaluAtion1_1;
+		
+		System.out.printf("점수 : %.2f \n" , toTal );
+		*/
 		//------ 문제17 여기에 풀이-------//
 		
 		
 		//------ 문제18 여기에 풀이-------//
-		
-		
+		/*
+		Scanner aGe1 = new Scanner(System.in);
+		byte aGe1_1 = aGe1.nextByte();
+		String aGe1_2 = aGe1_1 >= 10 && aGe1_1 < 20 ? "학생" : 
+							aGe1_1 >= 20 && aGe1_1 < 40 ? "성인" : 
+								aGe1_1 >= 40 ? "중년" : "어린이" ;
+		System.out.println(aGe1_2);
+		*/
 		//------ 문제19 여기에 풀이-------//
+		/*
+		Scanner koRean = new Scanner(System.in);
+		Scanner engLish = new Scanner(System.in);
+		Scanner maTh = new Scanner(System.in);
 		
+		float koRean1 = koRean.nextFloat();
+		float engLish1 = engLish.nextFloat();
+		float maTh1 = maTh.nextFloat();
 		
+		System.out.printf("국어 : %.0f \n" , koRean1);
+		System.out.printf("영어 : %.0f \n" , engLish1);
+		System.out.printf("수학 : %.0f \n" , maTh1);
+		
+		float aveRage = (koRean1+engLish1+maTh1)/3;
+		System.out.printf("평균 : %.2f \n" , aveRage);
+		*/
 		//------ 문제20 여기에 풀이-------//
 		
+		Scanner iD = new Scanner(System.in);
+		Scanner pW = new Scanner(System.in);
+		
+		String iD1 = iD.next();
+		String pW1 = pW.next();
+		
+		String logIn = (iD1 == "admin" && pW1 == "1234") ?
+										"로그인성공" : "로그인실패" ;
+		System.out.println("결과 : "+logIn);
 		
 		//------ 문제21 여기에 풀이-------//
+		/*
+		Scanner 정수1 = new Scanner(System.in);
+		Scanner 정수2 = new Scanner(System.in);
+		Scanner 정수3 = new Scanner(System.in);
 		
+		int 정수1_1 = 정수1.nextInt();
+		int 정수2_1 = 정수2.nextInt();
+		int 정수3_1 = 정수3.nextInt();
+		
+		int max = 정수1_1 ; 
+		max = 정수2_1>max ? 정수2_1 : max ;
+		max = 정수3_1>max ? 정수3_1 : max ;
+		
+		System.out.println("max : "+max);
+		*/
 		
 		
 	}

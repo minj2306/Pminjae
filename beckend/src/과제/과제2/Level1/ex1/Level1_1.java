@@ -5,7 +5,22 @@ public class Level1_1 {
 	public static void main(String[] args) {
 		System.out.println(" >> Level1_1 answer >> \n");
 		/* 문제풀이 위치 */
-		
+		boolean park = true;
+		byte m = 127;
+		char i = 'a';
+		short n = 32767;
+		int j = 2147483647;
+		long a = 999999999999999999L;
+		float e = 2.9162306f;
+		double b = 2.01029162306111111;
+		System.out.println("boolean = "+park);
+		System.out.println("byte = "+m);
+		System.out.println("char = "+i);
+		System.out.println("short = "+n);
+		System.out.println("int = "+j);
+		System.out.println("long = "+a);
+		System.out.println("float = "+e);
+		System.out.println("double = "+b);
 		/* ----------- */
 	}
 }

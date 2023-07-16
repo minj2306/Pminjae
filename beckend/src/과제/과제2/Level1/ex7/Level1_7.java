@@ -1,4 +1,4 @@
-package 테스트.Level1.ex7;
+package 과제.과제2.Level1.ex7;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -13,7 +13,44 @@ public class Level1_7 {
 		String output = "";
 		
 		/* 문제풀이 위치 */
+		System.out.print("회원명 String : ");
+		output = scanner.next(); 
+
+		System.out.print("상태 boolean : ");
+		boolean a = scanner.nextBoolean();
 		
+		System.out.print("회원번호 byte : ");
+		byte b = scanner.nextByte();
+		
+		System.out.print("성별 char : ");
+		char c = scanner.next().charAt(0);
+		
+		System.out.print("나이 short : ");
+		short d = scanner.nextShort();
+		
+		System.out.print("포인트 int : ");
+		int e = scanner.nextInt();
+		
+		System.out.print("예금액 long : ");
+		long f = scanner.nextLong();
+		
+		System.out.print("키 float : ");
+		float g = scanner.nextFloat();
+		
+		System.out.print("몸무게 double : ");
+		double h = scanner.nextDouble();
+		
+		System.out.println("==========회원개인정보=============");
+		System.out.println("|\t 회원명 : "+output+"\t\t|");
+		System.out.println("|\t 상태 : "+a+"\t\t|");
+		System.out.println("|\t 회원번호 : "+b+"\t\t|");
+		System.out.println("|\t 성별 : "+c+"\t\t\t|");
+		System.out.println("|\t 나이 : "+d+"\t\t|");
+		System.out.println("|\t 포인트 : "+e+"\t\t|");
+		System.out.println("|\t 예금액 : "+f+"\t\t|");
+		System.out.println("|\t 평균 : "+g+"\t\t|");
+		System.out.println("|\t 평균 : "+h+"\t\t|");
+		System.out.println("=================================");
 
 		/* ----------- */
 	}

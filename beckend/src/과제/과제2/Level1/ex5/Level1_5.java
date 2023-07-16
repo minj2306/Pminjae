@@ -1,4 +1,4 @@
-package 테스트.Level1.ex5;
+package 과제.과제2.Level1.ex5;
 
 public class Level1_5 {
 	
@@ -12,7 +12,19 @@ public class Level1_5 {
 		float value5 = 3.123123123F;
 		
 		/* 문제풀이 위치 */
-	
+		short a = value1;
+		int b = value2;
+		long c = value3;
+		float d = value4;
+		double e = value5;
+		
+		System.out.println("byte -> short :"+a);
+		System.out.println("short -> int : "+b);
+		System.out.println("int -> long : "+c);
+		System.out.println("long -> float : "+d);
+		System.out.println("float -> double : "+e);
+		
+		
 		/* ----------- */
 	}
 }
