@@ -21,21 +21,29 @@ public class 연산20문제 {
 		String num1 = "순번"; String writer1 = "작성자"; 
 		String conTent1 = "내용"; String date1 = "날짜";
 		System.out.println("|"+num1+"|"+writer1+"|\t"+conTent1+"\t|"+date1+"|");
-		byte num2 = 1; String writer2 = "강호동";
-		String conTent2 = "안녕하세요"; String date2 = "09-28";
+		Scanner 작성자 = new Scanner(System.in);
+		
+		byte num2 = 1; 
+		System.out.print("작성자 : ");
+		String writer2 = 작성자.nextLine();
+		System.out.print("내용 : ");
+		String conTent2 = 작성자.nextLine(); 
+		System.out.print("날짜(mm-dd) : ");
+		String date2 = 작성자.nextLine();
 		System.out.println("|  "+num2+"|"+writer2+"|\t"+conTent2+"\t|"+date2+"|\n-------------------------------");
 		
 		//------ 문제3 여기에 풀이-------//
-		/*
+		
 		Scanner scanner = new Scanner( System.in );
-		short 기본급 = scanner.nextShort(); 
+		System.out.print("기본급 : ");
+		short 기본급 = scanner.nextShort();
+		System.out.print("수당 : ");
 		short 수당 = scanner.nextShort();
-		System.out.println("기본급 : "+ 기본급);
-		System.out.println("수당 : "+ 수당);
-		System.out.println("실수령액 : "+((기본급+수당)-((기본급+수당)/10)));
-		*/
+		
+		System.out.println("실수령액 : "+( (기본급+수당) - (기본급/10) ) );
+		
 		//------ 문제4 여기에 풀이-------//
-		/*
+		
 		Scanner money = new Scanner( System.in);
 		int tM1 = money.nextInt();
 		System.out.println("금액 : "+tM1);
@@ -47,67 +55,70 @@ public class 연산20문제 {
 		System.out.println("만원 : " + tM3 + "장" );
 		System.out.println("천원 : " + tM4 + "장" );
 		System.out.println("백원 : " + tM5 + "개" );
-		*/
+		
+		// String.valueOf(tM1).charAt();
 		
 		//------ 문제5 여기에 풀이-------//
-		/*
+		// 배수 공식 : 값 % 수 = 나머지 	만약에 나머지가 0이면 값은 수의 배수
+		// 홀짝 공식 : 값 % 2 = 나머지 나머지가 1이면 홀 나머지가 0이면 짝 
+		
 		Scanner seVen = new Scanner( System.in );
 		int seVen1 = seVen.nextInt();
 		String seVen2 = (seVen1 % 7 == 0) ? "O" : "X" ;
 		System.out.println(seVen2);
-		*/
+		
 		//------ 문제6 여기에 풀이-------//
-		/*
+		
 		Scanner numBer = new Scanner( System.in );
 		int numBer1 = numBer.nextInt();
 		String numBer2 = (numBer1 % 2 == 1) ? "O" : "X" ;
 		System.out.println(numBer2);
-		*/
+		
 		
 		//------ 문제7 여기에 풀이-------//
-		/*
+		
 		Scanner seVen3 = new Scanner( System.in );
 		int seVen4 = seVen3.nextInt();
 		String seVen5 = (seVen4 % 7 == 0 && seVen4 % 2 ==0 ) ?
 													"O" : "X" ;
 		System.out.println(seVen5);
-		*/
+		
 		//------ 문제8 여기에 풀이-------//
-		/*
+		
 		Scanner seVen6 = new Scanner( System.in );
 		int seVen7 = seVen6.nextInt();
 		String seVen8 = (seVen7 % 7 == 0 || seVen7 % 2 ==1 ) ?
 													"O" : "X" ;
 		System.out.println(seVen8);
-		*/
+		
 		
 		//------ 문제9 여기에 풀이-------//
-		/*
+		
 		Scanner nuM1 = new Scanner(System.in);
 		Scanner nuM2 = new Scanner(System.in);
 		int nuM1_1 = nuM1.nextInt();
 		int nuM2_1 = nuM2.nextInt();
 		int eNd = (nuM1_1 > nuM2_1) ? nuM1_1 : nuM2_1 ;  
 		System.out.println(eNd+"이 크다.");
-		*/
+		
 		//------ 문제10 여기에 풀이-------//
-		/*
+		
 		Scanner cirCle = new Scanner(System.in);
 		int cirCle1 = cirCle.nextInt();
 		double cirCle1_1 = (cirCle1*cirCle1)*3.14 ;
 		System.out.println(cirCle1_1);
-		*/
+		
 		//------ 문제11 여기에 풀이-------//
-		/*
+		
 		Scanner nuM3 = new Scanner(System.in);
 		Scanner nuM4 = new Scanner(System.in);
 		float nuM3_1 = nuM3.nextFloat();
 		float nuM4_1 = nuM4.nextFloat();
 		float end1 = (nuM3_1 / nuM4_1) *100;
 		System.out.println(end1);
-		*/
+		
 		//------ 문제12 여기에 풀이-------//
-		/*
+		
 		Scanner nuM5 = new Scanner(System.in);
 		Scanner nuM6 = new Scanner(System.in);
 		Scanner nuM7 = new Scanner(System.in);
@@ -121,17 +132,17 @@ public class 연산20문제 {
 		System.out.println("밑변 : "+nuM6_1);
 		System.out.println("높이 : "+nuM7_1);
 		System.out.println("사다리꼴 넓이 : "+enD2);
-		*/
+		
 		//------ 문제13 여기에 풀이-------//
-		/*
+		
 		Scanner taLl = new Scanner(System.in);
 		short taLl_1 = taLl.nextShort();
 		double weIght = (taLl_1-100)*0.9;
 		System.out.println("키 : "+taLl_1);
 		System.out.println("표준체중 : "+weIght);
-		*/
+		
 		//------ 문제14 여기에 풀이-------//
-		/*
+		
 		Scanner taLl_2 = new Scanner(System.in);
 		Scanner weIght_2 = new Scanner(System.in); 
 		int taLl2_1 = taLl_2.nextInt();
@@ -141,17 +152,17 @@ public class 연산20문제 {
 		System.out.println("키 : "+taLl2_1);
 		System.out.println("몸무게 : "+ weIght2_1);
 		System.out.println("bmi : "+bMi);
-		*/
+		
 		//------ 문제15 여기에 풀이-------//
-		/*
+		
 		Scanner inCh = new Scanner( System.in );
 		int inCh1 = inCh.nextInt();
 		double cM = inCh1*2.54;
 		System.out.println(inCh1+" inch");
 		System.out.println(("="+cM)+"cm");
-		*/
+		
 		//------ 문제16 여기에 풀이-------//
-		/*
+		
 		Scanner middle = new Scanner(System.in);
 		float middle1 = middle.nextFloat();
 		Scanner fiNal = new Scanner(System.in);
@@ -169,7 +180,7 @@ public class 연산20문제 {
 		float toTal = middle1_1+fiNal1_1+evaluAtion1_1;
 		
 		System.out.printf("점수 : %.2f \n" , toTal );
-		*/
+		
 		//------ 문제17 여기에 풀이-------//  
 		/*
 		int x = 10;
@@ -185,16 +196,16 @@ public class 연산20문제 {
 		// 6. y = 23
 		
 		//------ 문제18 여기에 풀이-------//
-		/*
+		
 		Scanner aGe1 = new Scanner(System.in);
 		byte aGe1_1 = aGe1.nextByte();
 		String aGe1_2 = aGe1_1 >= 10 && aGe1_1 < 20 ? "학생" : 
 							aGe1_1 >= 20 && aGe1_1 < 40 ? "성인" : 
 								aGe1_1 >= 40 ? "중년" : "어린이" ;
 		System.out.println(aGe1_2);
-		*/
+		
 		//------ 문제19 여기에 풀이-------//
-		/*
+		
 		Scanner koRean = new Scanner(System.in);
 		Scanner engLish = new Scanner(System.in);
 		Scanner maTh = new Scanner(System.in);
@@ -209,7 +220,7 @@ public class 연산20문제 {
 		
 		float aveRage = (koRean1+engLish1+maTh1)/3;
 		System.out.printf("평균 : %.2f \n" , aveRage);
-		*/
+		
 		//------ 문제20 여기에 풀이-------//
 		
 		Scanner iD = new Scanner(System.in);
@@ -217,13 +228,15 @@ public class 연산20문제 {
 		
 		String iD1 = iD.next();
 		String pW1 = pW.next();
-		
+		//* 비교 / 산술 연산자는 객체에서 사용 불가능[기본타입vs객체 메모리 구조 다름]
+		//기본타입 데이터 비교시 == 가능 // 문자열 데이터 비교시 == 불가능 [.equals() 메소드 사용]
+		// 3 == 3 [가능]		// "안녕".equals("안녕")
 		String logIn = (iD1.equals("admin") && pW1.equals("1234")) ?
 										"로그인성공" : "로그인실패" ;
 		System.out.println("결과 : "+logIn);
 		
 		//------ 문제21 여기에 풀이-------//
-		/*
+		
 		Scanner 정수1 = new Scanner(System.in);
 		Scanner 정수2 = new Scanner(System.in);
 		Scanner 정수3 = new Scanner(System.in);
@@ -237,7 +250,7 @@ public class 연산20문제 {
 		max = 정수3_1>max ? 정수3_1 : max ;
 		
 		System.out.println("max : "+max);
-		*/
+		
 		
 		
 	}

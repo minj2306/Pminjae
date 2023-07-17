@@ -2,7 +2,6 @@ package 과제.과제2.Level1.ex7;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
-
 public class Level1_7 {
 	
 	public static void main(String[] args) {
