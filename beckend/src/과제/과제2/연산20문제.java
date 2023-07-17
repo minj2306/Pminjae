@@ -250,7 +250,7 @@ public class 연산20문제 {
 		max = 정수3_1>max ? 정수3_1 : max ;
 		
 		System.out.println("max : "+max);
-		
+
 		
 		
 	}
