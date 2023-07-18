@@ -120,7 +120,7 @@ public class If문제7문제 {
 		System.out.print("수학점수");
 		int mat = scanner.nextInt();
 		
-		int avar = kor+eng+mat;
+		double avar = (kor+eng+mat)/3.0;
 		System.out.println("평균점수 : "+avar);
 		
 		if( avar>=90 && kor==100 ) {
@@ -152,11 +152,10 @@ public class If문제7문제 {
 		if( iD.equals("admin") && pw.equals("1234") ) {
 			System.out.println("로그인 성공");
 		}
-		else {System.out.println("로그인 실패");
-	}
+		else {System.out.println("로그인 실패");}
 	
 }
-
+}
 /*
  	 문제1 : 2개의 정수를 입력받아서 더 큰수 출력 [ 경우의수 : 3개(크다,작다,같다=그외) ]
  	 문제2 : 3개의 정수를 입력받아서 가장 큰수 출력 
