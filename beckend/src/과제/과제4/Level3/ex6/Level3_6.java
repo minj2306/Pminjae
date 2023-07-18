@@ -57,6 +57,7 @@ public class Level3_6 {
 			
 			if(select==2) {//if 2 s
 				System.out.println("취소할 좌석을 선택해주세요");
+				System.out.println("[1] [2] [3]\n[4] [5] [6]");
 				int 취소 = scanner.nextInt();
 				if(취소==1) {
 					if(a.equals("예약")) {

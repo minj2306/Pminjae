@@ -27,7 +27,6 @@ public class 과제4_3_키오스크 {
 			System.out.print(">>>>>> 선택 : "); int ch = scanner.nextInt();
 			
 			/* 문제풀이 위치 */
-		
 			
 			if(ch==1) {//if1 s
 				
@@ -40,14 +39,10 @@ public class 과제4_3_키오스크 {
 				else if(콜라바구니>콜라재고) {
 					System.out.println("재고가 부족합니다.");
 				}
-				
 			}//if1 e
-			
-				
 			if(ch==2) {//if2 s
 				
 				if(환타바구니<=환타재고) {
-					
 					
 					++환타바구니;
 					환타 = 환타가격*환타바구니;
@@ -58,8 +53,6 @@ public class 과제4_3_키오스크 {
 					}
 
 			}//if2 e
-			
-				
 			if(ch==3) {//if3 s
 				
 				if(사이다바구니<=사이다재고) {
@@ -70,10 +63,7 @@ public class 과제4_3_키오스크 {
 					else if(사이다바구니>사이다재고) {
 						System.out.println("재고가 부족합니다.");
 					}
-
-				
 			}//if3 e
-					
 			if(ch==4) {//if4 s
 				System.out.println("---------선택하세요-------\n1.결제\t2.취소");		
 				int 결제 = scanner.nextInt();
@@ -107,7 +97,6 @@ public class 과제4_3_키오스크 {
 						
 						총금액 = 0;
 					}
-					
 					else{
 						System.out.println("금액이 부족합니다.");
 						
@@ -120,10 +109,7 @@ public class 과제4_3_키오스크 {
 						환타 = 0;
 						
 						총금액 = 0;
-	
 					}
-				
-			
 				}
 				if(결제==2) {
 					System.out.println("취소합니다.");

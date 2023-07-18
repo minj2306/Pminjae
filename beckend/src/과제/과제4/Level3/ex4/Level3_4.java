@@ -28,6 +28,7 @@ public class Level3_4 {
 				}
 			}
 			else {
+				System.out.println("누적값 : "+b);
 				System.out.println("종료합니다.");
 				break;
 			}
