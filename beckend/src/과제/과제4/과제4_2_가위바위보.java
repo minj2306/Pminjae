@@ -21,73 +21,7 @@ public class 과제4_2_가위바위보 {//class s
 			플레이어 = scanner.nextInt();
 			
 			/* 문제풀이 위치 */
-			if(플레이어 == 0) {// if 0 s
-				
-				Random random = new Random();
-				컴퓨터 = random.nextInt(3);
-				System.out.println(">>>>>>> 컴퓨터가 낸수 : "+ 컴퓨터 );
-				
-				if(컴퓨터 == 1) {
-					System.out.println(">>>>>>> 컴퓨터 승리");
-					컴퓨터승리수 += 1 ;
-					게임수 +=1 ;
-				}
-				else if(컴퓨터 == 2) {
-					System.out.println(">>>>>>> 플레이어 승리");
-					플레이어승리수 += 1 ;
-					게임수 +=1 ;
-				}
-				else {
-					System.out.println(">>>>>>> 무승부");
-					게임수 +=1 ;
-				}
-				
-			}// if 0 e
-			
-			if(플레이어 == 1) {// if 1 s
-				
-				Random random = new Random();
-				컴퓨터 = random.nextInt(3);
-				System.out.println(">>>>>>> 컴퓨터가 낸수 : "+ 컴퓨터 );
-				
-				if(컴퓨터 == 2) {
-					System.out.println(">>>>>>> 컴퓨터 승리");
-					컴퓨터승리수 += 1 ;
-					게임수 +=1 ;
-				}
-				else if(컴퓨터 == 0) {
-					System.out.println(">>>>>>> 플레이어 승리");
-					플레이어승리수 += 1 ;
-					게임수 +=1 ;
-				}
-				else {
-					System.out.println(">>>>>>> 무승부");
-					게임수 +=1 ;
-				}
-			}// if 1 e
-			
-			if(플레이어 == 2) {// if 2 s
-				
-				Random random = new Random();
-				컴퓨터 = random.nextInt(3);
-				System.out.println(">>>>>>> 컴퓨터가 낸수 : "+ 컴퓨터 );
-				
-				if(컴퓨터 == 0) {
-					System.out.println(">>>>>>> 컴퓨터 승리");
-					컴퓨터승리수 += 1 ;
-					게임수 +=1 ;
-				}
-				else if(컴퓨터 == 1) {
-					System.out.println(">>>>>>> 플레이어 승리");
-					플레이어승리수 += 1 ;
-					게임수 +=1 ;
-				}
-				else {
-					System.out.println(">>>>>>> 무승부");
-					게임수 +=1 ;
-				}
-			}// if 2 e
-			
+		
 			if(플레이어 == 3) {//if 3 s
 				System.out.println("[게임종료] : 게임횟수"+게임수+" 회");
 				if(플레이어승리수>컴퓨터승리수) {
@@ -109,6 +43,33 @@ public class 과제4_2_가위바위보 {//class s
 				}
 				break;
 			}//if 3 e
+		
+			Random random = new Random();
+			컴퓨터 = random.nextInt(3);
+			System.out.println(">>>>>>> 컴퓨터가 낸수 : "+ 컴퓨터 );			
+			
+			if(플레이어 == 0 && 컴퓨터 == 1 ||
+					플레이어 == 1 && 컴퓨터 == 2 ||
+						플레이어 == 2 && 컴퓨터 == 0) {// if 컴퓨터 승 s
+				
+					System.out.println(">>>>>>> 컴퓨터 승리");
+					컴퓨터승리수 += 1 ;
+					게임수 +=1 ;
+			}// if 컴퓨터 승 e
+			
+			else if(플레이어 == 0 && 컴퓨터 == 3 ||
+					플레이어 == 1 && 컴퓨터 == 0 ||
+						플레이어 == 2 && 컴퓨터 == 1 ) {// if 플레이어 승 s
+				
+					System.out.println(">>>>>>> 플레이어 승리");
+					플레이어승리수 += 1 ;
+					게임수 +=1 ;
+			}// if 플레이어 승 e
+			
+			else if ( 플레이어 == 컴퓨터 ) {
+				System.out.println(">>>>>>>> 무승부!");
+				게임수 += 1;
+			}
 			
 			/* ----------- */
 			
