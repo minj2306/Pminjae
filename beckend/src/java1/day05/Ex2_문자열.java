@@ -1,4 +1,4 @@
-package java1.day5;
+package java1.day05;
 
 public class Ex2_문자열 {
 	
