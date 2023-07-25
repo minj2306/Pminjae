@@ -56,7 +56,7 @@ public class 과제5_키오스크_배열 {
 				}
 				else {System.out.println("재고부족");}
 				// 4. 재고관리 업데이트
-				재고관리[ch-1] = 재고 + "," + 바구니+ "," + 가격;
+				재고관리[ch-1] = 재고 + "," + 바구니+ "," + 가격+ ","+name ;
 			
 			}
 			else if( ch == 4) {
@@ -70,7 +70,7 @@ public class 과제5_키오스크_배열 {
 					int 가격 = Integer.parseInt(재고관리[i].split(",")[2]);
 					String name = 재고관리[i].split(",")[3];
 					if( 바구니 > 0 ) { // 바구니에 수량이 있는 경우만 출력
-					System.out.printf("%10s %10s %10s \n" , 재고관리[i] ,  바구니 , 바구니*가격 );
+					System.out.printf("%10s %10s %10s \n" , name ,  바구니 , 바구니*가격 );
 					}
 				}
 			}
