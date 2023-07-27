@@ -5,9 +5,10 @@ public class 싱글톤 {
 	public static void main(String[] args) {
 		
 		// 1. Member 객체 생성
-			//오류 : 생성자를 private 되어 있는 클래스는 외부에서 객체
+			//오류 : 생성자를 private 되어 있는 클래스는 외부에서 객체생성 불가능
 		// Member member = new Member();
 		
+		//[두 객체는 다르다]
 		//Member member3 = new Member();
 		//Member member4 = new Member();
 		
