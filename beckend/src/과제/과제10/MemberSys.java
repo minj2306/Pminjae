@@ -9,7 +9,10 @@ import 과제.과제10.Member;
 public class MemberSys {
 	
 	static Member[] memberList = new Member[100];
-	static Scanner sc = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in);// 1. 모든 함수에서 사용 가는한 인스턴스 멤버
+	// 프로그램 내 전역구역에서 공유 사용되는 메모리 = 정적멤버
+	static int login = -1;	// 정적멤버 = 메소드영역 = 로그인 성공한 인덱스
+
 	
 	public static void main(String[] args) {
 		
@@ -19,24 +22,28 @@ public class MemberSys {
 			System.out.print("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기    선택> ");
 			int ch = sc.nextInt(); 
 			
-			if( ch == 1 ) {회원가입 (); }
+			if( ch == 1 ) {회원가입 (); }//main 함수 밖에 있는 다른 함수 호출
+			// 1. 인스턴스멤버(static 없는) 함수는 객체를 생성하고 호출한다.
+			//2. 정적멤버(static 있는) 함수는 객체없이 클래스를 통한 호출한다.
 			else if( ch == 2 ) { 로그인 (); } 
 			else if( ch == 3 ) { 아이디찾기 (); } 
 			else if( ch == 4 ) { 비밀번호찾기 (); } 
 			
 		} // w e 
-	}
+	}//main end
 	
 	static void 회원가입 () {
+		//입력받기 -> 각각 5개 입력받기
 		System.out.println("\n\n--------- 회원가입 ---------"); 
 		System.out.println("아이디 : "); String inputID = sc.next();
 		System.out.println("비밀번호 : "); String inputPw = sc.next();
 		System.out.println("이름 : "); String inputName = sc.next();
 		System.out.println("전화번호 : "); String inputPh = sc.next();
 		System.out.println("나이 : "); int inputAge = sc.nextInt();
-		
+		// 2. 5개 변수를 하나의 묶음 
 		Member member = new Member(inputID , inputPw , inputName , inputPh , inputAge );
-		
+		//3.  회원의 1개의 객체를 배열 저장
+			// 배열내 빈공간=null 을 찾는다
 		for(int i =0; i<memberList.length; i++) {
 			if(memberList[i] == null ) {
 				memberList[i] = member;
@@ -45,19 +52,19 @@ public class MemberSys {
 			}//if end
 		}//for end
 	}//회원가입 end
+	// 로그인 함수 입력받아 기존에 데이터와 일치한지 비교
 	static void 로그인 () {
 		
 		System.out.println("\n\n--------- 로그인 ---------"); 
 		System.out.println("아이디 : "); String inputID = sc.next();
 		System.out.println("비밀번호 : "); String inputPw = sc.next();
 		
-		int login = -1;
 		
 		for(int i = 0; i<memberList.length; i++) {
 			if(memberList[i] != null &&
 					memberList[i].id.equals(inputID) && 
 					memberList[i].password.equals(inputPw)) {
-				login = i;
+				login = i; // 정적 멤버 변수에 로그인 성공한 인덱스를 넣어두기 ->추후에 사용할 목적
 			}//if end
 		}//for end
 		if(login >= 0) {System.out.println("로그인 성공");}
@@ -69,20 +76,16 @@ public class MemberSys {
 		System.out.println("이름 : "); String inputName = sc.next();
 		System.out.println("전화번호 : "); String inputPh = sc.next();
 		
-		int login = -1;
-		String id = "";
 		for(int i = 0; i<memberList.length; i++) {
 			if(memberList[i] != null &&
 					memberList[i].name.equals(inputName) && 
 					memberList[i].phone.equals(inputPh)) {
-				login = i;
-				id = memberList[i].id;
+				System.out.println("찾은 아이디 : "+ memberList[i].id );
+				return;
 			}//if end
 		}//for end
-		if(login>=0) {
-			System.out.println("찾은 아이디 : "+ id );
-		}
-		else {System.out.println("아이디가 없습니다.");}
+	
+		System.out.println("아이디가 없습니다.");
 	}//아이디찾기 end
 	static void 비밀번호찾기 () { 
 		
