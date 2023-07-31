@@ -9,93 +9,53 @@ import java.util.Scanner;
 
 public class part4 {
 	
-	public static void main(String[] args) throws IOException  {
+	public static void main(String[] args) throws IOException {
 	
-	while (true) {
-		
-		Scanner scanner = new Scanner(System.in);
-		String filePath = "./src/복습/part4/재고파일.txt"; 
-		FileOutputStream fileOutputStream = new FileOutputStream(filePath,true);
-		FileInputStream fileInputStream = new FileInputStream(filePath);
-		File file = new File(filePath);
-		
-		byte[] inbyteArray = new byte[(int)file.length()];
-		String fileinfo = new String(inbyteArray);
-		
-		String[] 재고관리 = fileinfo.split("\n");
-		
-		System.out.println("-------------메뉴-------------");
-		System.out.println("-1 : 메뉴등록 0 : 결제");
-		for(int i = 0; i<재고관리.length; i++) {
-			String name = 재고관리[i].split(",")[0];
-			int stock = Integer.parseInt(재고관리[i].split(",")[1]);
-			int price = Integer.parseInt(재고관리[i].split(",")[2]);
-			int basket = Integer.parseInt(재고관리[i].split(",")[3]);
-			if(stock == 0) {
-				System.out.println((i+1)+":"+name+"[재고없음]");
-			}
-			else {
-				System.out.println((i+1)+":"+name+"["+price+"]");
-			}
-		}
-		System.out.println(">>>>>>선택"); int ch = scanner.nextInt();
-		
-		if(ch==-1) {
-			System.out.println("제품명 : "); String name = scanner.next();
-			System.out.println("초기재고 : "); int stock = scanner.nextInt();
-			System.out.println("가격 : "); int price = scanner.nextInt();
-			int basket = scanner.nextInt();
+		while (true) {
 			
-			String outStr = name+","+stock+","+price+basket+"\n";
+			Scanner scanner = new Scanner(System.in);
+			String filePath = "./src/복습/part4/재고파일";
+			FileOutputStream fileOutputStream = new FileOutputStream(filePath , true);
+			FileInputStream fileInputStream = new FileInputStream(filePath);
+			File file = new File(filePath);
 			
-			fileOutputStream.write(outStr.getBytes());
-			System.out.println("제품 등록 완료");
-		}
-		else if(ch > 0 && ch <=재고관리.length) {
+			byte[] inbyteArray = new byte[(int)file.length()];
+			fileInputStream.read(inbyteArray);
+			String fileInfo = new String( inbyteArray);
 			
-			String name = 재고관리[ch-1].split(",")[0];
-			int stock = Integer.parseInt(재고관리[ch-1].split(",")[1]);
-			int price = Integer.parseInt(재고관리[ch-1].split(",")[2]);
-			int basket = Integer.parseInt(재고관리[ch-1].split(",")[3]);
+			String[] 재고관리 = fileInfo.split("\n");
 			
-			if(stock >0) {
-				basket++; stock--;
-				System.out.println(name+" 제품 담았습니다.");
-			}
-			else {
-				System.out.println(name+" 재고 부족합니다.");
-			}
-			재고관리[ch-1] = name+","+stock+","+price+","+basket;
-			String outStr = "";
+			System.out.println("--------------메뉴--------------");
+			System.out.println("-1:제품등록 0:결제");
 			
-			for(int i=0 ; i<재고관리.length; i++) {
-				outStr += 재고관리[i].split(",")[0]+","+재고관리[i].split(",")[1]+","+
-						재고관리[i].split(",")[2]+","+재고관리[i].split(",")[3]+","+"\n";
-			}
-			
-			FileOutputStream fileOutputStream2 = new FileOutputStream(filePath);
-			fileOutputStream2.write(outStr.getBytes());
-			
-		}
-		else if(ch==0) {
-			System.out.printf("%10s %10s %10s\n","제품명","수량","가격");
-			
-			for(int i = 0; i<재고관리.length; i++) {
-				String name = 재고관리[i].split(",")[0];
-				int price = Integer.parseInt(재고관리[i].split(",")[2]);
-				int basket = Integer.parseInt(재고관리[i].split(",")[3]);
-				if(basket>0) {
-					System.out.printf("%10s %10d %10d\n",name,basket,basket*price);
-
+			for(int i=0; i<재고관리.length; i++) {
+				if(!재고관리[i].equals("")) {
+					String name = 재고관리[i].split(",")[0];
+					int stock = Integer.parseInt(재고관리[i].split(",")[1]);
+					int price = Integer.parseInt(재고관리[i].split(",")[2]);
+					int basket = Integer.parseInt(재고관리[i].split(",")[3]);
+					if(stock == 0) {
+						System.out.println((i+1)+":"+name+"[재고없음]");
+					}
+					else {
+						System.out.println((i+1)+":"+name+"["+price+ "]");
+					}
 				}
+			}
+			
+			System.out.println(">>>>선택"); int ch = scanner.nextInt();
+			
+			if(ch==-1) {
+				System.out.println("제품명 : "); String name = scanner.next();
+				System.out.println("초기재고 : "); int stock = sc
+			}
+			else if(ch>0 && ch<=재고관리.length) {
 				
 			}
-			
+			else if(ch==0) {
+				
+			}
 		}
-		
-		
-	}
-		
 			
 	}//main end
 	
