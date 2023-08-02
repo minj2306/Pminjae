@@ -112,6 +112,10 @@
                 datetime			: (날짜시간)YYYY-MM-DD HH:MM:SS
 			6.논리
 				boolean		[1]			: 0 or 1 
+			
+            - 제약조건 
+				1. pk	: primary key ( pk 필드명 )
+                2. fk	: foreign key ( fk 필드명 ) references pk테이블명(pk 필드명) [선택옵션]
 */
 /* ------------ 데이터베이스 만들기 -------------- */
 #예1 : 데이터베이스( 여러개의 테이블(표) 들이 저장 할 수 있는 공간 - 폴더와 비슷한 형태 ) 생성
@@ -191,16 +195,7 @@ drop table if exists member;
 create table member( id varchar(20) , password varchar(20) );
 # 6. 테이블생성 여부 확인
 select * from member;
-/*
-	문제2 : 
-		1. 웹개발 하는데 DB저장소 'sqldb1web2' 이름으로 DB 생성
-		2. 해당 db에 board 테이블 생성 
-				게시물번호 	( 필드명 :no  		타입 : 최대 21억정도 )
-				게시물제목		( 필드명 :title 		타입 : 문자열 최대 100 )	
-				게시물내용 	( 필드명 :content 	타입 : 문자열 최대 6만5천 이상 )
-				게시물조회수	( 필드명 :view 		타입 : 최대 21억정도 )
-				게시물작성일 	( 필드명 :date 		타입 : 날짜/시간 )
-*/
+
 # 1. 데이터베이스 생성 
 drop database if exists sqldb1web2;
 create database sqldb1web2;
@@ -209,3 +204,126 @@ use sqldb1web2;
 drop table if exists board;
 create table board( no int , title varchar(100) , content longtext , view int , date datetime );
 select * from board;
+/*
+	문제3 : 
+		1. 웹개발 하는데 DB저장소 'sqldb2web1' 이름으로 DB 생성
+		2. 해당 db에 memberboard 테이블 생성
+				회원번호 		(필드명 :mno			타입 : 최대 21억정도)
+                회원아이디 	(필드명 :mid			타입 : 문자열 최대 20)
+                회원비밀번호	(필드명 :mpw			타입 : 문자열 최대 20)			
+				게시물번호 	( 필드명 :bno  		타입 : 최대 21억정도 )
+				게시물제목		( 필드명 :btitle 		타입 : 문자열 최대 100 )	
+				게시물내용 	( 필드명 :bcontent 	타입 : 문자열 최대 6만5천 이상 )
+				게시물조회수	( 필드명 :bview 		타입 : 최대 21억정도 )
+				게시물작성일 	( 필드명 :bdate 		타입 : 날짜/시간 )
+*/
+drop database if exists sqldb2web1;
+create database sqldb2web1;
+
+use sqldb2web1;
+drop table if exists memberboard;
+create table memberboard( mno int , 			# 회원번호 	( 필드명 :mno			타입 : 최대 21억정도)
+						  mid varchar(20) , 	# 회원아이디 	( 필드명 :mid			타입 : 문자열 최대 20)
+                          mpw varchar(20) , 	# 회원비밀번호	( 필드명 :mpw			타입 : 문자열 최대 20)		
+                          bno int , 			# 게시물번호 	( 필드명 :bno  		타입 : 최대 21억정도 )
+                          btitle varchar(100) , # 게시물제목	( 필드명 :btitle 		타입 : 문자열 최대 100 )
+                          bcontent longtext , 	# 게시물내용 	( 필드명 :bcontent 	타입 : 문자열 최대 6만5천 이상 )
+                          bview int , 			# 게시물조회수	( 필드명 :bview 		타입 : 최대 21억정도 )
+                          bdate datetime		# 게시물작성일 ( 필드명 :bdate 		타입 : 날짜/시간 )
+                          ); 
+select * from memberboard;
+/*
+	문제4 : 
+		1. 웹개발 하는데 DB저장소 'sqldb2web1' 이름으로 DB 선택
+		2. 해당 db에 memberboard 테이블 기준으로 2개 테이블로 생성 필드와 타입은 동일
+				회원번호 		(필드명 :mno			타입 : 최대 21억정도)
+                회원아이디 	(필드명 :mid			타입 : 문자열 최대 20)
+                회원비밀번호	(필드명 :mpw			타입 : 문자열 최대 20)			
+				게시물번호 	( 필드명 :bno  		타입 : 최대 21억정도 )
+				게시물제목		( 필드명 :btitle 		타입 : 문자열 최대 100 )	
+				게시물내용 	( 필드명 :bcontent 	타입 : 문자열 최대 6만5천 이상 )
+				게시물조회수	( 필드명 :bview 		타입 : 최대 21억정도 )
+				게시물작성일 	( 필드명 :bdate 		타입 : 날짜/시간 )
+*/
+
+use sqldb2web1;
+drop table if exists memberboard2;
+create table memberboard2(mno int , 			# 회원번호 	( 필드명 :mno			타입 : 최대 21억정도)
+						  mid varchar(20) , 	# 회원아이디 	( 필드명 :mid			타입 : 문자열 최대 20)
+                          mpw varchar(20) 	 	# 회원비밀번호	( 필드명 :mpw			타입 : 문자열 최대 20)		
+						 );
+use sqldb2web1;
+drop table if exists contentboard;
+create table contentboard(mno int , 			# 회원번호 	( 필드명 :mno			타입 : 최대 21억정도)
+						  bno int , 			# 게시물번호 	( 필드명 :bno  		타입 : 최대 21억정도 )
+                          btitle varchar(100) , # 게시물제목	( 필드명 :btitle 		타입 : 문자열 최대 100 )
+                          bcontent longtext , 	# 게시물내용 	( 필드명 :bcontent 	타입 : 문자열 최대 6만5천 이상 )
+                          bview int , 			# 게시물조회수	( 필드명 :bview 		타입 : 최대 21억정도 )
+                          bdate datetime		# 게시물작성일 ( 필드명 :bdate 		타입 : 날짜/시간 )
+						 );
+select * from memberboard2;
+select * from contentboard;
+# 테이블 관계 상태 확인 -> 메뉴 - Database -> reverse enginnier
+-- 예1 : 1:M 관계 / PK:FK 관계 
+use sqldb2web1;
+drop table if exists member2;
+create table member2(mno_pk int , 			
+					 mid varchar(20) , 		
+					 mpw varchar(20) , 			
+					 primary key(mno_pk) -- 현재 테이블에서 mno_pk 라는 필드를 식별키로 사용
+                     );
+use sqldb2web1;
+drop table if exists board2;
+create table board2( 			
+					bno int , 			
+					btitle varchar(100) ,
+					bcontent longtext , 	
+					bview int , 			
+					bdate datetime ,		
+					mno_fk int ,		-- 1. FK 필드선언 
+					foreign key(mno_fk) references member2(mno_pk) -- 2. 현재 테이블에서 mno_fk 라는 필드를 외래키로 사용
+					# foreign key( mno_fk ) 		: 'mno_fk'라는 필드를 FK 필드로 설정
+					# references member2( mno_pk )	: FK 필드를 member2 테이블의 mno_pk 필드와 참조..[관계]
+					);
+                    
+/*
+	문제 5 : 조건a
+		1) 키오스크 시스템 개발하는데 'sqldb2sys' 라는 이름으로 DB 생성
+        2) 카테고리(category)와 제품(product) 테이블 2개를 선언
+        3) 카테고리	: 카테고리 번호(cno) , 카테고리명(cname) 
+			제품		: 제품번호(pno) , 제품명(pname), 제품가격(pprice) 
+			-필드 타입은 적절한 타입으로 선언
+        4) 두 테이블간 관계 
+			-pk 필드는 새로 생성하지 않고 pk 설정만하고 fk필드는 선언후 관계 설정
+
+*/
+
+drop database if exists sqldb2sys;
+create database sqldb2sys;
+# 조건 2) 1. 테이블 선언하고 필드명과 필드타입 선언
+# 2. PK 선정 [ 테이블당 1개 권장 ] 
+# 3. 1:M 관계할 경우에는 FK 필드 선언/설정 
+# 여러 테이블 생성할때 : PK 테이블 삭제하고 FK 테이블 생성
+# 테이블 삭제할때 : FK 테이블 삭제하고 PK 테이블 삭제 # 제약조건 옵션 사용
+use sqldb2sys;
+drop table if exists category;
+create table category( cno_pk tinyint ,
+					   cname varchar(10) ,
+					   primary key (cno_pk)
+                      );
+use sqldb2sys;
+drop table if exists product;
+create table product ( pno_pk int ,
+					   pname varchar(30) ,
+                       pprice int ,
+                       cno_fk tinyint , -- FK 필드로 사용할 필드 선언 [연결할 PK 필드명/타입 과 동일하게 선언]
+                       primary key(pno_pk) ,
+					   foreign key(cno_fk) references category(cno_pk)
+                      );
+use sqldb2sys;
+drop table if exists basket;
+create table basket(
+					bno int ,
+                    bdate datetime ,
+                    bcount int
+                    );
