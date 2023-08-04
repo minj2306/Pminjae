@@ -1,4 +1,4 @@
-# 확대축소 : ctrl + 마우스휠
+SELECT * FROM sqldb1.member;# 확대축소 : ctrl + 마우스휠
 # 한줄주석
 -- 한줄주석 
 /* 여러줄 주석 */
@@ -471,3 +471,49 @@ insert into product( pname , pprice , cno ) values( '사과에이드' , 3000 , 1
 insert into product( pname , pprice , cno ) values( '포도에이드' , 3500 , 1 );
 # 2번 카테고리[탄산]에 제품 등록 
 insert into product( pname , pprice , cno ) values( '제로콜라' , 3500 , 2 );
+#-----------------------------------------------------------------------------------------#
+
+#JDBC 와 연결할 DB 선언 
+drop database if exists sqldb4wep;
+create database sqldb4web;
+use sqldb4web;
+drop table if exists member;
+create table member( mno int not null unique auto_increment , -- 자동 부여 pk 만 가능
+					 mid varchar(20) not null unique , 
+                     mpassword varchar(20) not null , 
+                     mname varchar(20) not null , 
+                     mphone varchar(20) not null unique , 
+                     primary key(mno)
+                     );
+select * from member;
+# 1.회원가입 
+insert into member( mid , mpassword , mname , mphone ) values( 'ezen01' , '1234' , '이젠' , '031-444-2222' );
+
+# 2.로그인 [ 테이블에 값 검색(select) ]	필드:열/세로	레코드:행/가로
+select mid from member;					-- mid 필드의 레코드만 검색
+select mid , mpassword from member;			-- mid 와 mpw 필드의 레코드만 검색
+select mid , mpassword , mname from member;	-- mid 와 mpw dhk mname 필드의 레코드만 검색
+select * from member;					-- * [모든 필드 뜻] 모든 필드의 레코드 검색
+#1 로그인 할때 필요한 필드 [ 아이디 , 패스워드 ] 검색
+select mid , mpassword , mname from member;	
+#2 아이디와 패스워드가 일치한 레코드 검색 
+select mid , mpassword from member where mid = 'qwe';		# 만약에 mid 필드에 'qwe' 문자열이 있는 레코드 검색
+select mid , mpassword from member where mid = 'ezen01'; 	# 만약에 mid 필드에 'ezen01' 문자열이 있는 레코드 검색
+#만약에 mid 필드가 'ezen01' 이면서 mpassword 필드가 '1234' 인 레코드 검색
+select mid , mpassword from member where mid = 'ezen01' and mpassword ='1234';  	
+select * from member where mid = 'ezen01' and mpassword ='1234';  	
+# 자바 문자열 변환
+select * from member where mid = ? and mpassword = ?;  	
+
+/*
+
+	1. 테이블의 필드에 해당하는 레코드 검색
+		select 필드명 from 테이블명 				: 해당 필드의 레코드 검색 
+	
+    
+    2. 필드에 조건 추가				 		[ where 조건절 ]
+		select 필드명						from 테이블명 where 조건
+		select 필드명 , 필드명 , 필드명		from 테이블명 where 조건
+		select *						from 테이블명 where 조건
+
+*/
