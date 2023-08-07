@@ -10,7 +10,7 @@ import 과제.과제10.Member;
 public class Mainpage {
 	//0. 싱글톤 생성
 		//1. 현재 클래스로 static 객체 생성
-	public static Mainpage mainPage = new Mainpage();
+	private static Mainpage mainPage = new Mainpage();
 		//2. 외부 객체에서 해당 싱글톤 호출하기 위한 메소드
 	public static Mainpage getInstance() {
 		return mainPage;

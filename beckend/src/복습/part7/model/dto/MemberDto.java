@@ -1,19 +1,21 @@
 package 복습.part7.model.dto;
 
 public class MemberDto {
-
+	
 	String id;
-	String password;
+	String pw;
 	String name;
 	String phone;
 	int age;
 	
-	public MemberDto() {}
+	public MemberDto() {
+		// TODO Auto-generated constructor stub
+	}
 
-	public MemberDto(String id, String password, String name, String phone, int age) {
+	public MemberDto(String id, String pw, String name, String phone, int age) {
 		super();
 		this.id = id;
-		this.password = password;
+		this.pw = pw;
 		this.name = name;
 		this.phone = phone;
 		this.age = age;
@@ -27,12 +29,12 @@ public class MemberDto {
 		this.id = id;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPw() {
+		return pw;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 	public String getName() {
@@ -61,13 +63,7 @@ public class MemberDto {
 
 	@Override
 	public String toString() {
-		return "MemberDto [id=" + id + ", password=" + password + ", name=" + name + ", phone=" + phone + ", age=" + age
-				+ "]";
+		return "MemberDto [id=" + id + ", pw=" + pw + ", name=" + name + ", phone=" + phone + ", age=" + age + "]";
 	}
-	
-	
-	
-	
-	
 	
 }
