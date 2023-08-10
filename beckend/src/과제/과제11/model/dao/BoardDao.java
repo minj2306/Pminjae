@@ -73,8 +73,45 @@ public class BoardDao extends Dao {
 		}
 		
 		//7. boardView : 개별 개시물 출력
-		public void boardView () {}
+		public BoardDto boardView ( int bno ) {
+			try {
+				
+				String sql = "select b.* , m.mid from board b natural join member m where b.bno = ? ";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1 , bno);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					// 레코드 1개 --> Dto 변환
+					BoardDto dto = new BoardDto(
+							rs.getInt(1) , rs.getString(2) , rs.getString(3) ,
+							rs.getString(4) , rs.getInt(5)+1 , rs.getInt(6) , rs.getString(7) );
+					boardViewCount( rs.getInt(5) , bno );
+					return dto;
+				}
+				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			return null;
+		}
+		// 7-2 조회수증가 함수
+		public void boardViewCount( int view , int bno ) { 
+			
+			try {
+				String sql = "update board set bview = ? where bno = ? ";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1 , view+1 );
+				ps.setInt(2 , bno );
+				ps.executeUpdate();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			
+			
+			
 		
+		}
 		//8. boardUpdate : 게시물 수정
 		public void boardUpdate () {}
 		

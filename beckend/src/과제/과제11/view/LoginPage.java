@@ -29,7 +29,7 @@ public class LoginPage {
 			boardPrint();
 			
 			System.out.println("----------------------------");
-			System.out.println("1.로그아웃 2.회원정보 3.글쓰기  >>>>>선택");
+			System.out.println("1.로그아웃 2.회원정보 3.글쓰기 4.글조회	 >>>>>선택");
 			
 			try {
 			int ch = sc.nextInt(); // 만약에 타입과 일치하지 않는 값을 입력하면 InputMismatchException
@@ -37,6 +37,7 @@ public class LoginPage {
 			if(ch==1) { MemberController.getInstance().logOut(); }
 			else if(ch==2) { info(); }
 			else if(ch==3) { boardWrite(); }
+			else if(ch==4) { boardView(); }
 			
 			}catch(Exception e) {
 				System.out.println("경고] 잘못된 입력입니다.");
@@ -60,7 +61,7 @@ public class LoginPage {
 		System.out.println(">PHONE : " + result.getMphone());
 		
 		//2. 서브메뉴
-		System.out.println("1.비밀번호수정 2.회원탈퇴 3.뒤로가기 >>>>선택");
+		System.out.println("1.비밀번호수정 2.회원탈퇴 3.뒤로가기	>>>>선택");
 		int ch = sc.nextInt();
 		if(ch==1) { infoUpdate(); }
 		else if(ch==2) { infoDelete(); }
@@ -126,7 +127,7 @@ public class LoginPage {
 	//6. boardPrint : 모든 게시물 출력
 	public void boardPrint () {
 		
-		System.out.println("--------------게시판--------------");
+		System.out.println("--------------전체게시판--------------");
 		//1. 여러개의 게시물을 요청해서 반환된 결과 저장
 		ArrayList<BoardDto> result =
 				BoardController.getinstance().boardPrint();
@@ -142,7 +143,30 @@ public class LoginPage {
 	}
 	
 	//7. boardView : 개별 개시물 출력
-	public void boardView () {}
+	public void boardView () {
+		
+		System.out.println("--------------게시판--------------");
+		//1. 보고자하는 게시물의 게시물 번호를 입력받기[식별번호]
+		System.out.println("게시물번호 : "); int bno = sc.nextInt();
+		//2.
+		BoardDto result = BoardController.getinstance().boardView(bno);
+		
+		//3. 출력
+		System.out.printf("Bno : %-3s view : %-3s mid : %-10s date : %-20s \n" , 
+							result.getBno() , result.getBview()
+							, result.getMid() , result.getBdate());
+		System.out.printf("title : %s \n" , result.getBtitle() );
+		System.out.printf("content : %s \n" , result.getBcontent() );
+		
+		//4. 추가메뉴
+		System.out.println("1.뒤로가기 2.수정 3.삭제 		>>>선택");
+		int ch = sc.nextInt();
+		if(ch==1) {}
+		else if(ch==2) { boardUpdate(); }
+		else if(ch==3) { boardDelete(); }
+		
+		
+	}
 	
 	//8. boardUpdate : 게시물 수정
 	public void boardUpdate () {}

@@ -34,7 +34,11 @@ public class BoardController {
 		}
 		
 		//7. boardView : 개별 개시물 출력
-		public void boardView () {}
+		public BoardDto boardView ( int bno ) {
+			
+			return BoardDao.getinstance().boardView(bno);
+
+		}
 		
 		//8. boardUpdate : 게시물 수정
 		public void boardUpdate () {}
