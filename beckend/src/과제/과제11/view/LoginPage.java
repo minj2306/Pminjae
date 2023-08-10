@@ -1,10 +1,13 @@
 package 과제.과제11.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 
+import 과제.과제11.controller.BoardController;
 import 과제.과제11.controller.MemberController;
+import 과제.과제11.model.dto.BoardDto;
 import 과제.과제11.model.dto.MemberDto;
 
 public class LoginPage {
@@ -22,7 +25,9 @@ public class LoginPage {
 	//1. loginMenu : 로그인 헀을때 메뉴 페이지
 	public void loginMenu() {
 		while (MemberController.getInstance().getLoginSession() != 0) {
-		
+			
+			boardPrint();
+			
 			System.out.println("----------------------------");
 			System.out.println("1.로그아웃 2.회원정보 3.글쓰기  >>>>>선택");
 			
@@ -91,6 +96,7 @@ public class LoginPage {
 			boolean result = MemberController.getInstance().infoDelete();
 			
 			if(result) {
+				
 				System.out.println("안내] 회원탈퇴 성공 : 로그아웃 됩니다.");
 				MemberController.getInstance().logOut();
 			}
@@ -102,10 +108,38 @@ public class LoginPage {
 	}
 	
 	//5. boardWrite : 게시물 쓰기 페이지
-	public void boardWrite () {}
+	public void boardWrite () {
+		System.out.println("--------------글쓰기 페이지--------------");
+		System.out.println("제목");	String title = sc.next();
+		System.out.println("내용");	String content = sc.next();
+		
+		boolean result = BoardController.getinstance().boardWrite( title , content );
+	
+		if(result) {
+			System.out.println("안내] 글쓰기 등록");
+		}
+		else {
+			System.out.println("안내] 글쓰기 실패 : 관리자 문의");
+		}
+	}
 	
 	//6. boardPrint : 모든 게시물 출력
-	public void boardPrint () {}
+	public void boardPrint () {
+		
+		System.out.println("--------------게시판--------------");
+		//1. 여러개의 게시물을 요청해서 반환된 결과 저장
+		ArrayList<BoardDto> result =
+				BoardController.getinstance().boardPrint();
+		//2. 출력
+		System.out.printf(" %-3s %-4s %-20s %-10s %s \n" , "no" , "view" , "date" , "mid" , "title");
+		for(int i = 0 ; i < result.size(); i++) {
+			BoardDto dto = result.get(i); // i번쨰 객체를 호출
+			System.out.printf(" %-3s %-4s %-20s %-10s %s \n" , 
+							dto.getBno() , dto.getBview() , dto.getBdate() , dto.getMid() , dto.getBtitle() );
+		}
+		
+		
+	}
 	
 	//7. boardView : 개별 개시물 출력
 	public void boardView () {}
@@ -117,3 +151,9 @@ public class LoginPage {
 	public void boardDelete () {}
 	
 }
+/*
+ 	ArrayList<리스트에 저장할 타입> 리스트 객체명 = new ArrayList<>();
+ 		1. .size()	: 리스트내 객체수				== 유사 result.length
+ 		2. .get(인덱스) : 리스트내 인덱스번째의 객체 호출 	== 유사 result[i]
+ */
+
