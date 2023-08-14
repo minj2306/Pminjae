@@ -26,12 +26,21 @@ public class BoardDto {
 	}
 	
 	
-	
+	//글 등록시 사용되는 생성자
 	public BoardDto(String btitle, String bcontent, int mno) {
 		super();
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 		this.mno = mno;
+	}
+	
+	
+	//그 수정시 사용되는 생성자
+	public BoardDto(int bno, String btitle, String bcontent) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
 	}
 
 	//3. 메소드 [ 1.get or set  2.setString ]

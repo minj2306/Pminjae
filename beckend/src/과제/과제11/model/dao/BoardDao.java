@@ -3,6 +3,7 @@ package 과제.과제11.model.dao;
 import java.util.ArrayList;
 
 import 과제.과제11.model.dto.BoardDto;
+import 과제.과제11.model.dto.LetterDto;
 
 public class BoardDao extends Dao {
 		
@@ -113,11 +114,72 @@ public class BoardDao extends Dao {
 		
 		}
 		//8. boardUpdate : 게시물 수정
-		public void boardUpdate () {}
+		public boolean boardUpdate ( BoardDto boardDto ) {
+			
+			try {
+				String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, boardDto.getBtitle());
+				ps.setString(2, boardDto.getBcontent());
+				ps.setInt(3, boardDto.getBno());
+				
+				int row = ps.executeUpdate(); //select -> ps.ececuteQuery() / insert , update , delete -> int row = ps. excuteUpdate()
+				if (row == 1) { return true; }
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			return false;
+		}
 		
 		//9. boardDelete : 게시물  삭제
-		public void boardDelete () {}
+		public boolean boardDelete ( int bno ) {
+			
+			try {
+				String sql = "delete from board where bno  = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1 , bno);
+				int row = ps.executeUpdate();
+				
+				if(row ==1 ) {return true;}
+				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			return false;
+		}
+
+		//10. 쪽지보내기
+		public boolean letterWrite( LetterDto letterDto ) {
+			
+			try {
+				
+				String sql = "insert into letter ( lcontent , bno , givemno , savemno ) values ( ? , ? , ? , ? )";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, letterDto.getLcontent());
+				ps.setInt(2, letterDto.getBno());
+				ps.setInt(3, letterDto.getGivemno());
+				ps.setInt(4 , letterDto.getSavemno());
+				
+				int row = ps.executeUpdate();
+				
+				if(row == 1 ) {
+					return true;
+				}
+			}
+			catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			return false;
+		}
 		
+		//11 쪽지 확인하기
+		public void letterView() {}
 }
 
 /*
