@@ -10,29 +10,28 @@
 
 </head>
 <body>
+	<div class="start">
+		<button onclick="StartChat()" class="StartChat">이카오톡 시작하기</button>
+	</div>
 
 	<div class="wrap"><!-- wrap s -->
-		<div class="chatHead">
+	<!--<div class="chatHead">
 			<div class="EKAOTALK">EKAO TALK</div>
 		</div>
 		<div class="chatContent">
-			<div class="speechBubble">
-				<div class="anonymousId">9999님</div>
-				<div class="anonymousChat">안녕하쇼</div>
-			</div>
+
 		</div>
 		<div class="chatInput">
 			<div class="ChatButton">
-				<button onclick="StartChat()" class="StartChat">이카오톡 시작하기</button>
 				<button onclick="EndChat()" class="EndChat">이카오톡 끝내기</button>
 			</div>
 			<div class="sendArea">
 				<textarea class="chating"></textarea>
 				<button onclick="sendButton()" class="sendButton">전송</button>
-			</div>
-		</div><!-- chatInput end -->
+			</div> sendArea end
+		</div> chatInput end -->
 		
-	</div><!-- wrap end -->
+	</div>
 
 
 <!-- 최신 jquery  -->
