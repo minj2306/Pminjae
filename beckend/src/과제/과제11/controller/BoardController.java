@@ -81,10 +81,6 @@ public class BoardController {
 		}
 		
 		//11 쪽지 확인하기
-		public ArrayList<LetterDto> letterView() {
-			
-			return BoardDao.getinstance().letterView();
-			
-		}
+	
 	
 }
