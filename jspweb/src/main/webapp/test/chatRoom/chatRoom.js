@@ -84,26 +84,16 @@ function readChat(){
 			
 			for(let i = 0; i<r.length; i++){
 				html += `
+				<div class ="chatContentt" >
 				<div class="speechBubble${[i]}" , >
 					<div class="anonymousId">${r[i].chatid}님</div>
 					<div class="anonymousChat">${r[i].ccontent}</div>
 					<div class="Chattime">${r[i].ctime}</div>
 				</div>
+				</div>
 				`
-				if(r[i].chatid!=loginNum){
-				document.querySelector(`.speechBubble${[i]}`).className='otherChat';
-				}
+			
 			}//for end
-			
-			let speechBubble = document.querySelectorAll(".speechBubble");
-			
-			for(let i = 0; i<r.length; i++){
-			
-				if(r[i].chatid!=loginNum){
-					speechBubble[i].classList.add('otherChat');
-				}
-				else{ speechBubble[i].classList.remove('otherChat'); }
-			}
 			
 			
 			output.innerHTML = html;

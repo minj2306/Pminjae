@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.wrap{
+	margin: 0 auto;
+	width: 800px;
+	border: 1px solid black;
+}
+
+.inputAccount{
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+.inputcontent{
+	display: flex;
+	flex-direction: column;
+
+}
+.inputcontent input{
+	height: 20px;	
+	margin : 5px;
+	padding: 5px;
+}
+.inputBtnSpace{
+	margin: 5px;
+}
+.inputBtnSpace button{
+    width: 126px;
+    height: 122px;
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+}
+
+.readAccount table{
+	width : 800px;
+	border-top: 1px solid #e8e8e8;
+}
+.accuntTable tr {
+	width : 100%;
+	display: flex;
+	justify-content: space-around;
+	border-top: 1px solid #e8e8e8;
+	font-size: 30px;
+	align-items: center;
+}
+.choiceBtn{
+	display: flex;
+	flex-direction: column;
+}
+.choiceBtn button {
+	width: 62px;
+	background-color: black;
+	color: white;
+	border-top: 1px solid white;
+}

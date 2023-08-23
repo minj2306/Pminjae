@@ -10,3 +10,12 @@ create table visitlog(
     vdate datetime default now() , #방문록 작성일/시간 , 생략시 자동날짜 / 시간 등록
     primary key(vno)
 );
+
+drop table if exists accountbook;
+create table accountbook(
+					 ano int auto_increment ,
+                     atext varchar(20) not null ,
+                     anumber int not null ,
+                     adate date not null ,
+                     primary key(ano)
+                     );
