@@ -7,7 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!--
+	<%@ include file="header.jsp" %>
+	
+	<!-- 대문 -->
+	<h3>대문</h3>
+	
+	<!-- JSP 파일안에 다른 JSP 파일 import 하기 -->
+	<%@ include file="footer.jsp" %>
+
+</body>-
+</html>
+<!--
 		ip : 네트워크(인터넷) 사용하는 컴퓨터의 식별번호 [ip당 1개]
 			ip : localhost / 192.168.17.134
 			-cmd ->ipconfig
@@ -27,8 +37,3 @@
 	  				서버에 파일 빌드
 	  -->
 	
-	
-	<h3>JSP 실행 테스트</h3>
-
-</body>
-</html>
