@@ -82,7 +82,7 @@ function signup(){
 	//2. 객체화
 	let info = {
 		mid : midInput.value ,
-		mpw : mpwdInput.value ,
+		mpwd : mpwdInput.value ,
 		memail : memailInput.value ,
 		mimg : mimgInput.value
 	} 

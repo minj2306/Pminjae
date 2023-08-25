@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.wrap {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.inputboxTop {
+  margin-bottom: 20px;
+}
+
+.inputboxB {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  margin: 0;
+  margin-top: 4px;
+}
+
+.nameInput,
+.phoneInput {
+  width: 70%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.outputbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.seat {
+  background-color: #D0CACD;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.seat:hover {
+  background-color: #C8C1C5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.enterBtn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold; 
+}
+
+.exitBtn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold; 
+}
+
+.enterBtn:hover {
+  background-color: #2980b9;
+}
+
+.exitBtn:hover {
+  background-color: #c0392b;
+}
