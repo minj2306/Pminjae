@@ -13,7 +13,7 @@ function seat(i){
 function outputbox(){
 
 	$.ajax({
-	url : "/jspweb/library",
+	url : "/jspweb/AdmissionLibrary",
 	method : "get",
 	data : "" ,
 	success : function f(r){
@@ -33,6 +33,7 @@ function outputbox(){
 	})
 }
 
+//입실하기
 function C(){
 	
 	let nameInput = document.querySelector('.nameInput');
@@ -41,49 +42,53 @@ function C(){
 	if(nameInput.value.length==0){
 		alert('이름을 정확히 입력해주세요');
 	}
-	else if(phoneInput.value.lenght==0){
+	else if(phoneInput.value.length==0){
 		alert('핸드폰 번호를 정확히 입력해주세요\n(xxx-xxxx-xxxx)')
 	}
 	else{
 		$.ajax({
-		url : "/jspweb/library",
+		url : "/jspweb/AdmissionLibrary",
 		method : "get",
 		data : "" ,
 		success : function f(r){
 			
-		
-			let phoneInput= document.querySelector('.phoneInput');
-		
 			if(r[sno-1].sstatusName == '입실중'){
-			alert('입실중인 좌석입니다.') 
-			return;
+				alert('입실중인 좌석입니다.') 
+				return;
 			} 
-			
 			else if(phoneInput.value.length==13){
-				
+				console.log('else if 입장')
+			
 				for(let i = 0 ; i<r.length; i++){
+					console.log('for문 입장')
+					
 					let phone = r[i].sphone;
-					if(phone == phoneInput){
+					console.log(phone)
+					if(phone == phoneInput.value){
 						alert('한명당 1개의 자리만 입실 할 수 있습니다.')
+						return;
 					}
-					break;
 				}//for end
 				
 				$.ajax({
-				url : "/jspweb/library",
+				url : "/jspweb/AdmissionLibrary",
 				method : "put",
 				data : {sno : sno , 
 				sname : nameInput.value , 
-				sphone : phoneInput.value  } ,
+				sphone : phoneInput.value } ,
 				success : function f(r){
 					if(r==true){
 						alert( nameInput.value + "님" +
 										 sno + '좌석 입실되었습니다.')
+						nameInput.value = ''; phoneInput.value = '';
+						outputbox();
 						sno = 0;
+						
 					}
 				} ,
 				error : function f(r){}
-				})
+				}) 
+			
 		}//else if end
 	
 		} ,//success end
@@ -108,32 +113,38 @@ function D(){
       success : function f(r){
          console.log('퇴실하기 로직 JAVA와 통신성공01')
          console.log(r)
+          	let nameInput = document.querySelector('.nameInput').value;
+   			let phoneInput = document.querySelector('.phoneInput').value;
+           
+            if( phoneInput == r){
+			      
+  				let data = {
+      				sno : sno,
+      				sname : nameInput,
+      				sphone : phoneInput
+      				}
+			      $.ajax({
+			         url : "/jspweb/Library",
+			         method : "put",
+			         data : data ,
+			         success : function f(r){
+			            console.log('퇴실하기 로직 JAVA와 통신성공02')
+			            console.log(r)
+			            alert( nameInput + '님 퇴실되었습니다.')
+			            sno = 0;
+			            console.log(sno);
+						document.querySelector('.nameInput').value = '';
+   						document.querySelector('.phoneInput').value = '';
+			            outputbox();
+			         } ,
+			         error : function f(r){}
+		     	})
+   			}
+   			else{ alert('핸드폰 번호가 일치하지 않습니다.\n본인좌석을 다시 한번 확인해주세요') }
       }
    });
    
-   
-   let nameInput = document.querySelector('.nameInput').value;
-   let phoneInput = document.querySelector('.phoneInput').value;
-      let data = {
-      sno : sno,
-      sname : nameInput,
-      sphone : phoneInput
-      }
-   if( phoneInput == r){
-      $.ajax({
-         url : "/jspweb/libraryy",
-         method : "put",
-         data : data ,
-         success : function f(r){
-            console.log('퇴실하기 로직 JAVA와 통신성공02')
-            console.log(r)
-         } ,
-         error : function f(r){}
-      })
-   }
-   
-   sno = 0;
-}
+}// D() end
 
 
 

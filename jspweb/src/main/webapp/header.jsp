@@ -13,7 +13,8 @@
 		<ul>
 			<li> <a href="/jspweb/index.jsp">홈으로</a> </li>
 			<li> <a href="/jspweb/test/visitlog/visitlog.jsp">방문록(절대경로)</a>
-			<li> <a href="/jspweb/accountbook/accountbook.jsp" >과제1:가계부</a> </li>
+			<li> <a href="/jspweb/accountbook/accountbook.jsp" >과제1 : 가계부</a> </li>
+			<li> <a href="/jspweb/library/library.jsp" >과제2 : 독서실 좌석 선택</a> </li>
 			<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a> </li>
 		</ul>
 	</div>

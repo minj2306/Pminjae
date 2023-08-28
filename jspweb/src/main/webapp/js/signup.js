@@ -16,15 +16,31 @@
 			[0-9] : 숫자 0~9 패턴 검색
 			[가-힣] : 한글 패턴
 			{ 최소길이 , 최대길이 } : 문자열 길이 패턴
-			
+			+ : 앞에 있는 패턴 1개 이상 반복
+			? : 앞에 있는 패턴 0개 혹은 1개 이상반복
+			* : 앞에 있는 패턴 0개 반복
+						
 			예시]
 				1. [a-z]			: 소문자 a-z 검색
 				2. [a-zA-z] 		: 영문(대,소) 검색
 				3. [a-zA-z0-9] 		: 영문 + 숫자 조합 검색
 				4. [a-zA-z0-9가-힣] 	: 영문 + 숫자 + 한글 조합 패턴
 				5. [ac]				: a 와 c 패턴
+				6. (?=.*[패턴문자])	: 해당 패턴 문자가 한개 이상 포함패턴
+					(?=.*[a-z])		: 소문자 한개이상 필수
+					(?=.*[A-Z])		: 대문자 한개이상 필수
+					(?=.*[0-9]) 	: 숫자 한개 이상 필수
+					(?=.*[\d])		: 숫자 한개 이상 필수
+					(?=.*[!@#$%^&*]): 패턴 문자내 특수문자 한개 이상 필수
+				
+								/^(?=.*[A-Z]{5.20}$/
+
+				
+				/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*]{5.20}$/
+				영대문자 1개 + 영소문자 1개 + 숫자 1개 + 특수문자 1개 이상 ㅁ필수로 갖는 5~20 글자 사이
 			
 			1. /^ [a-z0-9]{5,30} $/ : 영문(소문자)+숫자 조합의 5~30 글자 패턴
+			2. /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{5,20}$/ : 
 			
 		패턴검사
 			"패턴".test(검사할데이터) : 해당 데이터가 패턴에 일치하면 true / 아니면 false
@@ -49,7 +65,7 @@ function idcheck(){//실행조건 : 아이디 입력창에 입력할떄마다
 		$.ajax({
 			url : "/jspweb/MemberFindController" ,
 			method : "get" ,
-			data : { mid : mid } ,
+			data : { type : "mid" , data : mid } ,
 			success : r => { 
 				if(r){ idcheckbox.innerHTML ='사용중인 아이디 입니다.' }
 				else{ idcheckbox.innerHTML ='사용 가능한 아이디 입니다.' }
@@ -62,12 +78,182 @@ function idcheck(){//실행조건 : 아이디 입력창에 입력할떄마다
 	}
 	// 3. 결과출력  
 
+}//idcheck end
+
+//비밀번호 유효성검사 [ 1. 정규 표현식 검사 2. 비밀번호와 비밀번호 확인 일치여부 ]
+function pwcheck(){
+	
+		let pwcheckbox = document.querySelector('.pwcheckbox')
+	
+		console.log('패스워드 입력중')
+		let mpwd = document.querySelector('.mpwd').value; console.log('mpwd :' + mpwd);
+		
+		let mpwdconfirm = document.querySelector('.mpwdconfirm').value;
+		
+		
+		 
+		 //2. 유효성검사	
+		 	//1. 정규 표현식 만들기 [영대소문자 + 숫자 조합 5~20 글자 사이] 
+	 	let mpwdj = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{5,20}$/
+	 	
+	 	
+		if(mpwdj.test(mpwd)){
+		
+			if(mpwdj.test(mpwdconfirm)){
+				
+				if(mpwd==mpwdconfirm){
+					pwcheckbox.innerHTML ='사용가능한 비밀번호'
+				}
+				else{
+					pwcheckbox.innerHTML = '비밀번호가 일치하지 않습니다.'
+				}
+			}
+			else{
+				pwcheckbox.innerHTML = '영대소문자 1개 이상 + 숫자 1개 이상 조합 5~20글자 사이로 입력해주세요'
+			}
+		}
+		else{
+			pwcheckbox.innerHTML = '영대소문자 1개 이상 + 숫자 1개 이상 조합 5~20글자 사이로 입력해주세요'
+		}
+		
 }
 
 
+function emailcheck(){
+	console.log('emailcheck 열림')
+	let emailcheckbox = document.querySelector('.emailcheckbox');
+	//1. 입력된 값 호출
+	let memail = document.querySelector('.memail').value;
+	
+	//2. 이메일 정규표현식 [ 영대소문자,숫자,_- @ ]
+	//itdanja@kakao.com
+	// 1.itdanja	: 이메일 아이디부분은 영대 소문자 , 숫자 , _- 패턴
+	// 2. @			: + @ 	@ 앞에 패턴이 1개 이상 필수
+	// 3. 도메인
+		//회사명		: @ 뒤에 그리고 . 앞에 패턴은 a-zA-Z0-9_-
+		// .		: +\.	: . 앞에 패턴이 1개 이상 필수
+		//도메인		: .뒤에 패턴은 a-zA-Z
+	
+	let memailj = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]+$/	
+	
+	if(memailj.test(memail)){
+		console.log('테스트 통과')
+		$.ajax({
+			url : "/jspweb/MemberFindController" ,
+			method : "get" ,
+			data : { type : "memail" , data : memail },
+			success : r => {console.log(r);
+				if(r){
+					emailcheckbox.innerHTML = '사용중인 이메일입니다.';
+					 document.querySelector('.authReqBtn').disabled = true; // 해당 버튼의 disabled 속성 적용
+				}
+				 else{
+					 emailcheckbox.innerHTML = '사용가능한 이메일입니다.';
+					 document.querySelector('.authReqBtn').disabled = false;// 해당 버튼의 disabled 속성 해제
+					 
+				 }
+			},
+			error : r => {console.log(r);}
+		})
+	}
+	else{
+		emailcheckbox.innerHTML = '이메일 형식에 맞게 입력해주세요'
+		document.querySelector('.authReqBtn').disabled = true; // 해당 버튼의 disabled 속성 적용
 
+	}
+}
+
+function authReq(){
+	console.log('authReq() 실행')
+	
+	//1. div 호출
+	let authbox = document.querySelector( '.authbox')
+	
+	//2. auth html 구성
+	let html = `
+				<span class="timebox"></span>
+				<input class="ecode" type="text">
+				<button onclick="auth()" type="button">인증</button><br/>
+				`;
+	// 3. auth html 구성
+	authbox.innerHTML = html;
+	
+	//4. 타이머 실행
+	authcode = '1234';
+	timer = 10;
+	settimer(); // 타이머실행
+}
+
+let authcode = '';
+let timer = 0;
+
+let timerInter; //setInterval() 함수를 가지고 있는 변수 [setInterval 종료시 필요]
+	
+//5. 타이머 함수 만들기
+function settimer(){
+	//setInterval( 함수명 , 실행간격[밀리초]): 특정시간마다 함수를 실행하는 함수
+	timerInter = setInterval( () => { 
+		
+		// 시간형식 만들기	
+			//1. 분 만들기
+		let m = parseInt( timer/ 60 ); // 분 계산 [ 몫 ]
+		let s = parseInt( timer% 60 ); // 초 계산 [ 나머지 ]
+			//2. 두자리수 맞춤 3 -> 03
+		m = m < 10 ? "0"+m : m; //만약에 분이 10보다 작으면 한자리수 이므로 0 붙이고 아니면
+		s = s < 10 ? "0"+s : s;
+		document.querySelector('.timebox').innerHTML = `${m}:${s}`; // 현재 인증시간(초) HTML 대입
+		timer--; // 1씩 차감
+		
+		//만약에 타이머가 0보다 크면 [시간 끝] 
+		if(timer < 0){
+			//1. setInterval 종료
+			clearInterval(timerInter);
+			//2. 인증실패 알림
+			document.querySelector('.emailcheckbox').innerHTML ='인증실패'
+			//3. authbox 구역 HTML 초기화
+			document.querySelector('.authbox').innerHTML = ``;
+		}
+	
+	} , 1000 );
+	
+}
+/*
+	setInterval() : 특정 시간마다 함수를 실행하는 함수
+		1.
+			let 변수명 = setInterval(function 함수명(){ } , 밀리초 )
+			let 변수명 = setInterval(function (){ } , 밀리초 )
+			let 변수명 = setInterval( 함수명(){ } , 밀리초 )
+			let 변수명 = s etInterval(()=>{ } , 밀리초 )
+
+	clearInterval( timerInter )
+
+*/
+// 6. 인증요청후 인증코드를 입력하고 인증하는 함수
+
+function auth(){
+	console.log('auth() 열림')
+	//1. 입력받은 인증코드
+	let ecode = document.querySelector('.ecode').value;
+	console.log('ecode : ' + ecode)
+	console.log('authcode : ' + authcode)
+
+	//2. 비교[인증코드와 입력받은 인증코드 ]
+	if(authcode == ecode){
+		//1. setInterval 종료
+		clearInterval( timerInter )
+		//2. 인증성공 알림
+		document.querySelector('.emailcheckbox').innerHTML = '인증성공'
+		//3. authbox 구역 HTML 초기화
+		document.querySelector('.authbox').innerHTML = ``;
+	}
+	else{console.log('인증코드불일치')
+		document.querySelector('.emailcheckbox').innerHTML = '인증코드 불일치'
+	}
+}
 
 console.log("signup js 열림")
+
+//회원가입 메소드
 function signup(){
 	
 	console.log("signup열림")

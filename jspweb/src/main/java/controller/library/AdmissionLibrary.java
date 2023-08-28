@@ -14,38 +14,31 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.dao.LibraryDAO;
 import model.dto.LibraryDTO;
 
-/**
- * Servlet implementation class library
- */
-@WebServlet("/library")
-public class library extends HttpServlet {
+@WebServlet("/AdmissionLibrary")
+public class AdmissionLibrary extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public library() {
+       
+    public AdmissionLibrary() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    //죄석 출력
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		ArrayList<LibraryDTO> result = LibraryDAO.getinstance().outputbox();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonArray = objectMapper.writeValueAsString(result);
 		
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(jsonArray);
+		response.getWriter().print(jsonArray); 
 		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
-
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -58,7 +51,6 @@ public class library extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(result);
 	}
-
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

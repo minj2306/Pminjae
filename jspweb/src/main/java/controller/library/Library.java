@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import model.dao.LibraryDAO;
 import model.dto.LibraryDTO;
 
 /**
- * Servlet implementation class libraryy
+ * Servlet implementation class Library
  */
-@WebServlet("/libraryy")
-public class libraryy extends HttpServlet {
+@WebServlet("/Library")
+public class Library extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public libraryy() {
+    public Library() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,8 +31,16 @@ public class libraryy extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		int sno = Integer.parseInt(request.getParameter("sno") );
+		
+		String r = LibraryDAO.getinstance().Ddata(sno);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String result = objectMapper.writeValueAsString(r);
+		
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
 	}
 
 	/**
@@ -46,7 +56,7 @@ public class libraryy extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	      System.out.println(" 퇴실하기 로직 도착 ");
+		 System.out.println(" 퇴실하기 로직 도착 ");
 	      // 요청
 	      int sno = Integer.parseInt(request.getParameter("sno"));
 	      System.out.println(sno);
@@ -61,10 +71,10 @@ public class libraryy extends HttpServlet {
 	      boolean r = LibraryDAO.getinstance().Dsql(dto);
 	      System.out.println(r);
 	      // 응답
-	      response.setContentType("application/json;charset=UTF-8");
+	      response.setContentType("application/json; charset=UTF-8");
 	      response.getWriter().print(r);
 
-		
+	
 	}
 
 	/**

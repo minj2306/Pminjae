@@ -1,7 +1,6 @@
 package model.dto;
 
 public class LibraryDTO {
-
 	private int sno;
 	private String sname;
 	private String sphone;
@@ -85,7 +84,6 @@ public class LibraryDTO {
 				+ ", sstatusName=" + sstatusName + "]";
 	}
 
-	
 	
 	
 	
