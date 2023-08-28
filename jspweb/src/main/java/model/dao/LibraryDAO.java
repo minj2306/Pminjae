@@ -2,17 +2,17 @@ package model.dao;
 
 import java.util.ArrayList;
 
-import model.dto.libraryDto;
+import model.dto.LibraryDTO;
 
-public class libraryDao extends Dao{
+public class LibraryDAO extends Dao{
 
-	private static libraryDao libraryDao = new libraryDao();
-	private libraryDao() {}
-	public static libraryDao getinstance() { return libraryDao; }
+	private static LibraryDAO libraryDao = new LibraryDAO();
+	private LibraryDAO() {}
+	public static LibraryDAO getinstance() { return libraryDao; }
 	//출력하기
-	public ArrayList<libraryDto> outputbox(){
+	public ArrayList<LibraryDTO> outputbox(){
 		
-		ArrayList<libraryDto> list = new ArrayList<>();
+		ArrayList<LibraryDTO> list = new ArrayList<>();
 		
 		try {
 			
@@ -25,7 +25,7 @@ public class libraryDao extends Dao{
 			
 			while (rs.next()) {
 				
-				libraryDto libraryDto = new libraryDto(
+				LibraryDTO libraryDto = new LibraryDTO(
 						rs.getInt(1) , rs.getString(2) ,
 						rs.getString(3) ,rs.getString(4)
 						
@@ -44,7 +44,7 @@ public class libraryDao extends Dao{
 	public boolean C( int sno , String sname , String sphone ) {
 		
 		try {
-			String sql = "update slibrary set sname = ? , sphone = ? where sno = ?";
+			String sql = "update slibrary set sname = ? , sphone = ? , sstatus = 1 where sno = ?";
 			
 			ps = conn.prepareStatement(sql);
 			
@@ -66,7 +66,7 @@ public class libraryDao extends Dao{
 	}
 	
 	   // 퇴실하기 ------------------------------------------------
-	   public boolean Dsql( libraryDto dto) {
+	   public boolean Dsql( LibraryDTO dto) {
 	      System.out.println(" 퇴실하기 SQL 도착 ");
 	      try {
 	         String sql = "update slibrary set sname = 'none', sphone = 'none', sstatus = 0 where sno = ?";

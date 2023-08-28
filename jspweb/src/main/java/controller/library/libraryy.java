@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.libraryDao;
-import model.dto.libraryDto;
+import model.dao.LibraryDAO;
+import model.dto.LibraryDTO;
 
 /**
  * Servlet implementation class libraryy
@@ -56,9 +56,9 @@ public class libraryy extends HttpServlet {
 	      System.out.println(sphone);
 	      
 	      // DAO에게 전달 및 반환 값 받기
-	      libraryDto dto = new libraryDto( sno , sname , sphone );
+	      LibraryDTO dto = new LibraryDTO( sno , sname , sphone );
 	      System.out.println(dto);
-	      boolean r = libraryDao.getinstance().Dsql(dto);
+	      boolean r = LibraryDAO.getinstance().Dsql(dto);
 	      System.out.println(r);
 	      // 응답
 	      response.setContentType("application/json;charset=UTF-8");

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import model.dao.libraryDao;
-import model.dto.libraryDto;
+import model.dao.LibraryDAO;
+import model.dto.LibraryDTO;
 
 /**
  * Servlet implementation class library
@@ -29,7 +29,7 @@ public class library extends HttpServlet {
     //죄석 출력
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<libraryDto> result = libraryDao.getinstance().outputbox();
+		ArrayList<LibraryDTO> result = LibraryDAO.getinstance().outputbox();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonArray = objectMapper.writeValueAsString(result);
@@ -53,7 +53,7 @@ public class library extends HttpServlet {
 		String sname = request.getParameter("sname");
 		String sphone = request.getParameter("sphone");
 		
-		boolean result = libraryDao.getinstance().C(sno, sname, sphone);
+		boolean result = LibraryDAO.getinstance().C(sno, sname, sphone);
 		
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(result);

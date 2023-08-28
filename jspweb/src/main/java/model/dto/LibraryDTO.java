@@ -1,6 +1,6 @@
 package model.dto;
 
-public class libraryDto {
+public class LibraryDTO {
 
 	private int sno;
 	private String sname;
@@ -8,11 +8,11 @@ public class libraryDto {
 	private int sstatus;
 	private String sstatusName;
 	
-	public libraryDto() {
+	public LibraryDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public libraryDto(int sno, String sname, String sphone, int sstatus, String sstatusName) {
+	public LibraryDTO(int sno, String sname, String sphone, int sstatus, String sstatusName) {
 		super();
 		this.sno = sno;
 		this.sname = sname;
@@ -22,7 +22,7 @@ public class libraryDto {
 	}
 
 	
-	public libraryDto(int sno, String sname, String sphone, String sstatusName) {
+	public LibraryDTO(int sno, String sname, String sphone, String sstatusName) {
 		super();
 		this.sno = sno;
 		this.sname = sname;
@@ -32,7 +32,7 @@ public class libraryDto {
 
 	
 	
-	public libraryDto(int sno, String sname, String sphone) {
+	public LibraryDTO(int sno, String sname, String sphone) {
 		super();
 		this.sno = sno;
 		this.sname = sname;
