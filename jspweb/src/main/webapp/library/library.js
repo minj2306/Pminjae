@@ -116,6 +116,9 @@ function D(){
           	let nameInput = document.querySelector('.nameInput').value;
    			let phoneInput = document.querySelector('.phoneInput').value;
            
+           if(nameInput.length==0){ alert('이를을 입력해주세요') }
+           else if( phoneInput.length == 0 ){ alert('핸드폰 번호를 입력해주세요') }
+           else{
             if( phoneInput == r){
 			      
   				let data = {
@@ -139,9 +142,10 @@ function D(){
 			         } ,
 			         error : function f(r){}
 		     	})
-   			}
+   			}//if end
    			else{ alert('핸드폰 번호가 일치하지 않습니다.\n본인좌석을 다시 한번 확인해주세요') }
-      }
+      }//else end
+   }//success end
    });
    
 }// D() end
