@@ -342,16 +342,23 @@ function signup(){
 				contentType : false , //FormData
 				processData : false , 
 				success : r =>{
-					console.log(r);
+					console.log('뿅뿅')
+					if(r==true){
+					alert("회원가입 성공")
+					location.href = '/jspweb/member/login.jsp'
+					}
+					else{
+					alert("회원가입 실패")
+					}
 				},
 				error : e => {console.log(e);}
 			})
 		
 	}
-	else{ console.log('회원가입 불가능') }
+	else{ alert('정상적으로 입력 안된 내용이 있습니다') }
 	
 	
-}
+} 
 
 // 0. 유효성검사가 없는 회원가입 메소드
 /*

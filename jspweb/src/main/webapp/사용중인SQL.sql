@@ -29,3 +29,14 @@ create table member(
                     mimg longtext , 					--( 회원 프로필 이미지사진 이름 )
                     primary key(mno)
                     ); 
+                    
+drop table if exists hrm;
+create table hrm(
+				 hno int auto_increment ,
+                 hname varchar(10) not null ,
+                 hphone varchar(13) not null unique ,
+                 hposition varchar(10) not null,
+                 hdate date default (current_date()) ,
+                 himg longtext ,
+                 primary key(hno)
+                 );
