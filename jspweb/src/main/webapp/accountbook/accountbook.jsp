@@ -8,7 +8,7 @@
 	<link href ="accountbook.css" rel="stylesheet" />
 </head>
 <body>
-
+<%@include file ="../header.jsp" %>
 	<div class="wrap">
 		<div class="inputAccount">
 			<div class="inputcontent">

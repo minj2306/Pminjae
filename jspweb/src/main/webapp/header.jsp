@@ -29,18 +29,18 @@
 		</ul>
 		
 		<ul class="submenu"><!-- 서브메뉴 -->
-			<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a> </li>
+<!-- 		<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a> </li>
 			<li> <a href="/jspweb/member/login.jsp">로그인</a></li>
 			<li> <a href="#">로그아웃</a></li>
 			<li> <a href="#">마이페이지</a></li>
-			<li> <img class="himg" alt="" src="/jspweb/member/img/default.webp"></li>
+			<li> <img class="himg" alt="" src="/jspweb/member/img/default.webp"></li> -->
 		</ul>
 
 	</div>
 	
 <!-- 최신 jquery  -->
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<script src="/jspweb/js/header.js"></script>
 </body>
 </html>
 <!-- 404 : 경로문제 [ 1.그 경로/파일 없거나 , 2.있는데 오타 ] -->

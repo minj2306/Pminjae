@@ -37,9 +37,12 @@
 }
 .OutputBox{
 	border: 1px solid black;
+	height: 580px;
+	overflow: scroll;
 }
 
 .outputTable{
 	width: 600px;
+	
 	text-align: center;
 }
