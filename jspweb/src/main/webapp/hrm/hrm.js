@@ -56,7 +56,12 @@ function registRation(){
 		console.log('통신성공')
 		console.log(status);
 		
-		if(r==true){ alert('직원등록 성공했습니다.') }
+		if(r==true){ 
+			alert('직원등록 성공했습니다.')
+			hname.value = '';
+			hphone.value ='';
+			goOutput()
+		 }
 		else{alert('직원등록 실패.')}
 		
 	} ,//success end
