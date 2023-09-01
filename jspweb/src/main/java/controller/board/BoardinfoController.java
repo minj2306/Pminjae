@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -32,9 +33,11 @@ public class BoardinfoController extends HttpServlet {
 		// 3. DAO 
 		ArrayList<BoardDto> result = BoardDao.getinstance().getList();
 		System.out.println(result);
-		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonArray = objectMapper.writeValueAsString( result );
 		// 4. 응답
-		
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(jsonArray);
 		
 	}
 	// 2. 쓰기
