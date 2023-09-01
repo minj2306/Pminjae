@@ -17,7 +17,9 @@ function onWrite(){
 	
 }
 
-function viewContent(){
+// 2. 모든글 조회 [js 열렸을떄 1회 자동 실행]
+getList()
+function getList(){
 	
 	$.ajax({
 	url : "/jspweb/BoardinfoController",
