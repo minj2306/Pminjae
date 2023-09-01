@@ -1,6 +1,7 @@
 drop database if exists jspweb;
 create database jspweb;
 
+#방문록
 drop table if exists visitlog;
 create table visitlog(
 	vno int auto_increment , # 식별번호 자동번호 부여
@@ -11,6 +12,7 @@ create table visitlog(
     primary key(vno)
 );
 
+#가계부
 drop table if exists accountbook;
 create table accountbook(
 					 ano int auto_increment ,
@@ -20,6 +22,7 @@ create table accountbook(
                      primary key(ano)
                      );
                      
+#회원가입
 drop table if exists member;
 create table member(
 					mno int auto_increment ,			--식별번호(회원번호) , 자동번호 부여
@@ -29,7 +32,7 @@ create table member(
                     mimg longtext , 					--( 회원 프로필 이미지사진 이름 )
                     primary key(mno)
                     ); 
-                    
+# 직원 등록          
 drop table if exists hrm;
 create table hrm(
 				 hno int auto_increment ,
@@ -40,3 +43,33 @@ create table hrm(
                  himg longtext ,
                  primary key(hno)
                  );
+
+# 카테고리
+drop table if exists bcategory;
+create table bcategory(
+						bcno int auto_increment ,
+                        bcname varchar(30) not null ,
+                        primary key(bcno)
+                        );
+
+insert into bcategory values ( 1 , '공지사항' );
+insert into bcategory values ( 2 , '자유게시판' );
+insert into bcategory values ( 3 , '노하우' );
+
+select * from bcategory;
+
+# 게시판
+drop table if exists board;
+create table board(
+					bno int auto_increment ,
+                    btitle varchar(30) not null ,
+                    bcontent longtext ,
+                    bfile longtext ,
+                    bdate datetime default now() ,
+                    bview int default 0 ,
+                    mno int ,
+                    bcno int ,
+                    primary key (bno) ,
+                    foreign key(mno) references member (mno) on delete cascade , -- 회원탈퇴시 게시물도 같이 삭제 [ 제약조건 ]
+                    foreign key(bcno) references bcategory(bcno) on delete cascade on update cascade -- 카테고리 삭제시 게시물도 삭제 , 카테고리번호 변경시 fk도 같이 변경
+                    );

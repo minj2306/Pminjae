@@ -1,6 +1,9 @@
-/**
- * 
- */
+
+
+let 헤더변수 = "헤더변수 데이터";
+
+let loginState = false; /*로그인 상태 true 로그인중  false 비로그인*/
+
 getMemberinfo()
 function getMemberinfo(){
 	
@@ -17,6 +20,7 @@ function getMemberinfo(){
 		let html = ``;
 
 		if(r==null){//비로그인
+			loginState = false;
 			html +=`
 					<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a> </li>
 					<li> <a href="/jspweb/member/login.jsp">로그인</a></li>
@@ -25,6 +29,7 @@ function getMemberinfo(){
 			
 		}
 	 	else{//로그인
+			loginState = true;
 			html += `
 					<li> <a href="#">${r.mid} 님</a></li>
 					<li> <img class="himg" alt="" src="/jspweb/member/img/${r.mimg}"></li>

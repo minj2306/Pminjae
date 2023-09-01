@@ -149,7 +149,7 @@ public class MemberDao extends Dao {
 			
 			ps.setString(1, newpwd);
 			ps.setString(2, mimg);
-			ps.setInt(3, mno);
+			ps.setInt(3, mno); 
 			ps.setString(4, mpwd);
 			
 			int count = ps.executeUpdate();
@@ -164,7 +164,7 @@ public class MemberDao extends Dao {
 		
 		return false;
 	}
-	
+	 
 	//8. 회원탈퇴 [ 삭제할 회원번호 , 검증할 패스워드 ]
 	public boolean mdelete(int mno , String mpwd) {
 		
