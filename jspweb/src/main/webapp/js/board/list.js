@@ -16,3 +16,17 @@ function onWrite(){
 	}
 	
 }
+
+function viewContent(){
+	
+	$.ajax({
+	url : "/jspweb/BoardinfoController",
+	method : "get",
+	data : "" ,
+	success : function f(r){
+		
+	} ,
+	error : function f(r){}
+	})
+	
+}

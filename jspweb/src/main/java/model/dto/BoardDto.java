@@ -10,7 +10,7 @@ public class BoardDto {/* 게시물 , 카테고리 */
 	private String bdate;
 	private int bview;
 	private int mno;
-	private int bcon;
+	private int bcno;
 	//-게시물에 추가적으로 표시할 필드들
 	private String mid; //작성자 회원 아이디 [ 사용자는 게시물 조회시 작성자 회원 번호보다 작성자 아이디 원하는 경우 다수]
 	private String bcname; //카테고리명 [ 사용자는 게시물 조회시 카테고리 번호보단 카테고리 이름 원하는 경우 다수 ]
@@ -20,7 +20,7 @@ public class BoardDto {/* 게시물 , 카테고리 */
 		// TODO Auto-generated constructor stub
 	}
 
-	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcon,
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcno,
 			String mid, String bcname) {
 		super();
 		this.bno = bno;
@@ -30,9 +30,19 @@ public class BoardDto {/* 게시물 , 카테고리 */
 		this.bdate = bdate;
 		this.bview = bview;
 		this.mno = mno;
-		this.bcon = bcon;
+		this.bcno = bcno;
 		this.mid = mid;
 		this.bcname = bcname;
+	}
+	
+	// 글 등록시 사용되는 생성자 [btitle , bcontent , bfile , mno , bcno]
+	public BoardDto(String btitle, String bcontent, String bfile, int mno, int bcno) {
+		super();
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.mno = mno;
+		this.bcno = bcno;
 	}
 
 	public int getBno() {
@@ -91,12 +101,12 @@ public class BoardDto {/* 게시물 , 카테고리 */
 		this.mno = mno;
 	}
 
-	public int getBcon() {
-		return bcon;
+	public int getBcno() {
+		return bcno;
 	}
 
-	public void setBcon(int bcon) {
-		this.bcon = bcon;
+	public void setBcno(int bcno) {
+		this.bcno = bcno;
 	}
 
 	public String getMid() {
@@ -118,7 +128,7 @@ public class BoardDto {/* 게시물 , 카테고리 */
 	@Override
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
-				+ ", bdate=" + bdate + ", bview=" + bview + ", mno=" + mno + ", bcon=" + bcon + ", mid=" + mid
+				+ ", bdate=" + bdate + ", bview=" + bview + ", mno=" + mno + ", bcno=" + bcno + ", mid=" + mid
 				+ ", bcname=" + bcname + "]";
 	}
 	
