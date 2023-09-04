@@ -25,19 +25,51 @@ public class BoardinfoController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    // type : 1. 전체 조회 , 2.개별조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 1. 요청
-		// 2. 유효성검사 / 객체화
-		// 3. DAO 
-		ArrayList<BoardDto> result = BoardDao.getinstance().getList();
-		System.out.println(result);
+		String type = request.getParameter("type");
+		
 		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonArray = objectMapper.writeValueAsString( result );
+		String json = "";
+		
+		if( type.equals("1")) {//전체조회 로직
+		
+			ArrayList<BoardDto> result = BoardDao.getinstance().getList();
+			System.out.println(result);
+			
+			json = objectMapper.writeValueAsString( result );
+			
+		}
+		
+		else if (type.equals("2")) {//개별조회 로직
+			
+			// 매개변수 요청
+			int bno = Integer.parseInt( request.getParameter("bno"));
+			// DAO 처리
+			BoardDto result = BoardDao.getinstance().getBoard( bno );
+			
+			// 3. 만약에 (로그인 혹은 비로그인) 요청한 사람과 게시물 작성한 사람과 동일 하면
+			Object object = request.getSession().getAttribute("loginDto");
+			//로그인 정보[세션]
+			if( object == null ) {//비로그인
+				result.setIshost(false);
+			}
+			else {//로그인
+				MemberDto login = (MemberDto)object;
+				//내가쓴글
+				if(login.getMno() == result.getMno()) {
+					result.setIshost(true);
+				}
+				else { result.setIshost(false); }
+			}
+			json = objectMapper.writeValueAsString( result );
+			
+		}
 		// 4. 응답
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(jsonArray);
+		response.getWriter().print( json ); 
 		
 	}
 	// 2. 쓰기
@@ -73,13 +105,52 @@ public class BoardinfoController extends HttpServlet {
 		response.getWriter().print(result);
 		
 	}
-
+	//수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("put 컨트롤러 들어옴");
+		//1. 수정할 첨부파일 업로드
+		MultipartRequest multi = new MultipartRequest(
+											request,
+											request.getServletContext().getRealPath("/board/upload") ,
+											1024*1024*10 ,
+											"UTF-8" ,
+											new DefaultFileRenamePolicy()
+											);
+									
+		//2. 수정할 데이터 요청
+		int bcno = Integer.parseInt( multi.getParameter("bcno"));
+		String btitle = multi.getParameter("btitle");
+		String bcontent = multi.getParameter("bcontent");
+		String bfile = multi.getParameter("bfile");
+		
+		//2. * 수정할 게시물 식별키
+		int bno = Integer.parseInt( multi.getParameter("bno"));
+		BoardDto boardDto = new BoardDto(bno, btitle, bcontent, bfile, bcno);
+			System.out.println("수정된 Dto : " + boardDto);
+		
+		//* 만약에 새로운 첨부파일이 없으면 기존 첨부파일 그대로 사용
+		if( boardDto.getBfile() == null) {
+			//기존 첨부파일
+			boardDto.setBfile( BoardDao.getinstance().getBoard(bno).getBfile() );
+		}
+		
+		//3. Dao
+		boolean result = BoardDao.getinstance().onUpdate(boardDto);
+		
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
+		
 	}
-
+	//삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//1. 요청
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		//2. Dao
+		boolean result = BoardDao.getinstance().ondelete(bno);
+		
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
+		
 	}
 
 }

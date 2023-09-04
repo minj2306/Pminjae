@@ -70,11 +70,120 @@ public class BoardDao extends Dao{
 		return list;
 	}
 	//3. 개별 글 출력
+	public BoardDto getBoard( int bno ) {
+		
+		viewIncre( bno );
+		
+		try {
+			
+			String sql = "select b.* , m.mid , m.mimg , bc.bcname "
+							+ "from board b "
+							+ "natural join member m "
+							+ "natural join bcategory bc "
+							+ "where b.bno = ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, bno);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {// 한개 레코드 조회 ㅑㄹ
+				BoardDto boardDto = new BoardDto(
+						rs.getInt("bno"), 
+						rs.getString("btitle") , rs.getString("bcontent") ,
+						rs.getString("bfile") , rs.getString("bdate") , 
+						rs.getInt("bview") , rs.getInt("mno") , rs.getInt("bcno") ,
+						rs.getString("mid") , rs.getString("bcname") , rs.getString("mimg")
+						);
+				
+				return boardDto;
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
 	
 	//4. 게시물 수정
+	public boolean onUpdate( BoardDto dto ) {
+		
+		try {
+			
+			String sql = "update board "
+							+"set btitle = ? , bcontent = ? , bcno = ? , bfile = ? "
+							+"where bno = ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, dto.getBtitle());
+			ps.setString(2, dto.getBcontent());
+			ps.setInt(3, dto.getBcno());
+			ps.setString(4, dto.getBfile());
+			ps.setInt(5, dto.getBno());
+			
+			int count = ps.executeUpdate();
+			
+			if(count == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
 	
 	//5. 게시물 삭제
+	public boolean ondelete( int bno ) {
+		
+		try {
+			
+			String sql = "delete from board where bno = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			
+			int count = ps.executeUpdate();
+			
+			if(count == 1) {
+				return true;
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return false;
+	}
+	
 	
 	//6. 조회수 증가
+	public boolean viewIncre( int bno ) {
+		
+		try {
+			
+			String sql = "update board set bview = bview + 1 where bno = ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, bno);
+			
+			int count = ps.executeUpdate();
+			
+			if(count == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+
 	
 }
