@@ -37,19 +37,53 @@ public class BoardDao extends Dao{
 		
 		return false;
 	}
+	
+	// 2-2 게시물 수 출력
+	public int getTotalsize( int bcno ) {
+		
+		try {
+			
+			String sql = "select count(*) from board b";
+			
+			if( bcno != 0) { sql += "where b.bcno = " + bcno; }
+			
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next() ) {
+				return rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
 	//2. 모든 글 출력
-	public ArrayList<BoardDto> getList(){
+	public ArrayList<BoardDto> getList( int bcno , int listsize , int startrow ){
 
 		ArrayList<BoardDto> list = new ArrayList<>();
 		
 		try {
 			
 			String sql = "select b.* , m.mid , m.mimg , bc.bcname "
-							+ "from board b natural join bcategory bc "
-							+ "natural join member m "
-							+ "order by b.bdate desc";
+					+ "from board b "
+					+ "natural join bcategory bc "
+					+ "natural join member m ";
+			
+			if( bcno != 0) {//만약에 카테고리 선택 했으면
+				
+				sql += "where b.bcno = " + bcno;
+			}
+			// 뒷부분 공통 sql
+			sql += " order by b.bdate desc limit ? , ?";
 			
 			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1 , startrow);
+			ps.setInt(2, listsize);
 			
 			rs = ps.executeQuery();
 			
