@@ -2,7 +2,17 @@
  * 
  */
 console.log('write.js 왔다')
+/* 썸머노트 실행 */
+$(document).ready(function() {
+	
+	let option = {
+		lang : 'ko-kr' ,
+		height : 500 ,
+		placeholder : '여기에 내용작성'
+	}
+  $('#summernote').summernote( option );
 
+});
 // write , update , delete : js 내장 함수들 존재하기 때문에
 function bwrite(){
 	
@@ -16,6 +26,7 @@ function bwrite(){
 	console.log (formData);
 	
 	//3. ajax로 대용량 form 전송하기
+	
 	$.ajax({
 	url : "/jspweb/BoardinfoController",
 	method : "post",
@@ -35,5 +46,6 @@ function bwrite(){
 	} ,
 	error : e => {}
 	})
+	
 }
 

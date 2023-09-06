@@ -39,13 +39,21 @@ public class BoardDao extends Dao{
 	}
 	
 	// 2-2 게시물 수 출력
-	public int getTotalsize( int bcno ) {
+	public int getTotalsize( int bcno , String key , String keyword ) {
 		
 		try {
 			
-			String sql = "select count(*) from board b";
+			String sql = "select count(*) from board b natural join member m ";
 			
+			//만약에 전챕보기가 아니면 [카테고리별 개수]
 			if( bcno != 0) { sql += "where b.bcno = " + bcno; }
+			
+			// 만약에 검색이 있으면
+			if(!key.isEmpty() && !keyword.isEmpty()) {
+				if(bcno != 0) { sql += " and "; }
+				else { sql += "where "; }
+				sql += key + " like  '%" + keyword+ "%' ";
+			}
 			
 			ps = conn.prepareStatement(sql);
 			
@@ -62,7 +70,7 @@ public class BoardDao extends Dao{
 	}
 	
 	//2. 모든 글 출력
-	public ArrayList<BoardDto> getList( int bcno , int listsize , int startrow ){
+	public ArrayList<BoardDto> getList( int bcno , int listsize , int startrow , String key , String keyword ){
 
 		ArrayList<BoardDto> list = new ArrayList<>();
 		
@@ -74,14 +82,28 @@ public class BoardDao extends Dao{
 					+ "natural join member m ";
 			
 			if( bcno != 0) {//만약에 카테고리 선택 했으면
-				
 				sql += "where b.bcno = " + bcno;
 			}
+			
+			// 만약에 검색이 있다 vs 없다
+				//문자열.isEmpty() : 문자영ㄹ이 비어있으면 [''] null vs '' 다름
+			if(!key.isEmpty() && !keyword.isEmpty() ) {
+				
+				// - 만약에 카테고리 내 검색이면 이미 where 구문이 존재 하기 때문에 and 추가
+				if(bcno != 0) { sql+=" and "; }
+				// 카테고리가 전체 검색이면 where 구문이 없었으므로 where추가
+				else { sql += " where "; }
+				
+				
+				sql +=" " + key + " like '%" + keyword + "%' " ;
+			}
+			
+			
 			// 뒷부분 공통 sql
 			sql += " order by b.bdate desc limit ? , ?";
 			
 			ps = conn.prepareStatement(sql);
-			
+			System.out.println(ps);
 			ps.setInt(1 , startrow);
 			ps.setInt(2, listsize);
 			

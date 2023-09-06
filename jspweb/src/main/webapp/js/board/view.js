@@ -45,9 +45,12 @@ function getBoard(){
 								${r.bcontent} 
 							</div>
 						첨부파일 : <div> 
-									${r.bfile} 
+									<a href="/jspweb/FileDownLoad?filename=${r.bfile}">
+										${r.bfile}
+									</a> 
 								 </div>
 						`;
+						/* <a href=""> */
 			html += `<a href="list.jsp"><button type="button">목록보기</button> </a>`;
 			//3. 만약에 본인글 인지 제어 [ 본인글이면 수정/삭제 표시함 / 아니면 표시안함]
 			if(r.ishost ){

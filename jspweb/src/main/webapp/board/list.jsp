@@ -52,13 +52,13 @@
 				<button type="button"> > </button> 다음페이지 -->
 			</div>
 			<!-- 6. 검색구역 -->
-			<select class="bbtn" >	<!-- 검색키워드 -->
-				<option>제목</option>
-				<option>내용</option>
-				<option>작성자</option>
+			<select class="bbtn key" >	<!-- 검색키워드 -->
+				<option value="b.btitle">제목</option>
+				<option value="b.bcontent">내용</option>
+				<option value="m.mid">작성자</option>
 			</select>
 			<input class="keyword" type="text"> <!-- 검색내용 -->
-			<button class="bbtn type="button">검색</button>
+			<button onclick="onSearch()" class="bbtn" type="button">검색</button>
 		</div>
 	</div>
 

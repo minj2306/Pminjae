@@ -18,7 +18,13 @@ function onWrite(){
 }
 
 /* 게시물 조회 조건 객체*/
-let pageOject = { type : 1 , bcno : 0 , listsize : 10 , page : 1}
+let pageOject = { type : 1 , 
+					bcno : 0 , 
+					listsize : 10 , 
+					page : 1 ,
+					key : '' ,
+					keyword : '' 
+				}
 	// * type : 1 전체조회 , 2 개별조회
 	// * bcno : 조회할 카테고리 번호 [ 기본값은 전체보기 ]
 	// * listsize : 하나의 페이지에 최대 표시할 게시물 수 [ 기본값은  10개 ]
@@ -27,6 +33,11 @@ let pageOject = { type : 1 , bcno : 0 , listsize : 10 , page : 1}
 function onCategory( bcno ){
 	console.log('클릭된 카테고리 : ' + bcno);
 	pageOject.bcno = bcno; // 조회 조건객체내 카테고리 번호를 선택한 카테고리로 변경
+
+	//검색 해제
+	pageOject.key = '';
+	pageOject.keyword = '';
+	
 	getList(1); // 조건이 변경되었기 때문에 다시 출력 [ 재 랜더링/새로고침 ]
 }
 
@@ -36,6 +47,15 @@ function onListSize(){
 	pageOject.listsize = document.querySelector('.listsize').value;
 	getList(1)
 	
+}
+
+//5. 검색 버튼을 클릭했을때
+function onSearch(){
+	pageOject.key = document.querySelector('.key').value;
+	pageOject.keyword = document.querySelector('.keyword').value;
+	console.log(pageOject.key);
+	console.log(pageOject.keyword);
+	getList(1);
 }
 
 // 2. 모든글 조회 [js 열렸을떄 1회 자동 실행]
@@ -93,7 +113,7 @@ function getList( page ){
 			// 이전 버튼 [page <=1 ? page : page-1 : 만약에 1페이지에서 이전버튼 클릭시 1페이지로 고정하고 아니면 1 차감]
 		html += `<button onclick="getList(${ page <= 1 ? page : -1})"  type="button"> < </button>`
 			//페이지 번호 버튼	
-		for(let i = 1; i <= r.totalpage ; i++){
+		for(let i = r.startbtn; i <= r.endbtn ; i++){
 		// 만약에 현재페이지와 i번째 페이지와 일치하면 버튼 태그에 class="selectpage" 추가
 		html += `	
 				<button onclick="getList(${i})" class ="${page==i ? 'selectpage' : '' }" type="button">${i}</button><!-- 페이징버튼 -->
@@ -107,7 +127,15 @@ function getList( page ){
 		
 		//------------------------------3. 게시물 수 출력---------------------
 		let boardcount = document.querySelector('.boardcount');
-		boardcount.innerHTML = `총 게시물 수 : ${ r.totalsize}`
+		
+		// 1. 검색이 있을 떄
+		if(pageOject.key == '' && pageOject.keyword == ''){
+			boardcount.innerHTML = `총 게시물 수 : ${ r.totalsize}`
+		}
+		// 2. 검색이 없을 떄
+		else{
+			boardcount.innerHTML = `검색된 게시물 수 : ${ r.totalsize}`
+		}	
 		
 	} ,
 	error : function f(r){}
