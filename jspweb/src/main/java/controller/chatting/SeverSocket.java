@@ -65,7 +65,7 @@ public class SeverSocket {
 	public void onMessage( Session session , String msg ) throws Exception {
 			
 		System.out.println("보낸 클라이언트 " + session + "\n보낸내용 : " + msg);
-		
+
 		// 2-2 메시지를 보낼 내용 구성 [보낸사람 , 보낸내용]
 		MsgDto msgDto = null;
 			//- 보낸사람 찾기 [ 보낸세션을 이용한 mid 찾기 ]
