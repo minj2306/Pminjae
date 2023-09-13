@@ -35,7 +35,7 @@ function registRation(){
 		return;
 	}
 
-	else if(status==false){
+	else if(statuss==false){
 		alert('이미 등록된 핸드폰 번호 입니다.');
 		return;
 	}
@@ -70,7 +70,7 @@ function registRation(){
 	
 }
 
-let status = false;
+let statuss = false;
 
 function hphoneCheck() {
 	console.log('hphoneCheck() 실행');
@@ -87,11 +87,11 @@ function hphoneCheck() {
 			for(let i = 0 ; i < r.length ; i++){
 			
 				if( r[i].hphone == hphone.value){
-				status = false;
+				statuss = false;
 				return;
 				}
 			}
-			status = true;
+			statuss = true;
 			
 		} ,
 		error : function f(r){}
