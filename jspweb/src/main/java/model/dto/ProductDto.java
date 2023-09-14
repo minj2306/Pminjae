@@ -5,49 +5,34 @@ import java.util.Map;
 
 public class ProductDto {
 	//제품 카테고리
-	private int pcno;
-	private String pcname;
+	 int pcno;
+	 String pcname;
 	
 	//제품
-	private int pno;
-	private String pname;
-	private String pcontent;
-	private int pprice;
-	private int pstate;
-	private String pdate;
-	private String plat;
-	private String plng;
+	 int pno;
+	 String pname;
+	 String pcontent;
+	 int pprice;
+	 int pstate;
+	 String pdate;
+	 String plat;
+	 String plng;
 	
 	//작성자 번호
-	private int mno;
+	 int mno;
 	
 	// 제품사진
 	// 한 필드에 여러개 저장할수 있게 Map 사용
 	// 키 : 이미지 번호 / 값 : 이미지 이름
-	private Map<Integer, String> imgList = new HashMap<>();
+	 Map<Integer, String> imgList = new HashMap<>();
 	
 	//제품 등록한 회원 아이디
-	private String mid;
+	 String mid;
 	
 	public ProductDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	// 제품등록용 생성자
-	public ProductDto(int pcno, String pname, String pcontent, int pprice, String plat, String plng, int mno,
-			Map<Integer, String> imgList) {
-		super();
-		this.pcno = pcno;
-		this.pname = pname;
-		this.pcontent = pcontent;
-		this.pprice = pprice;
-		this.plat = plat;
-		this.plng = plng;
-		this.mno = mno;
-		this.imgList = imgList;
-	}
-
 
 
 	public ProductDto(int pcno, String pcname, int pno, String pname, String pcontent, int pprice, int pstate,
@@ -66,6 +51,21 @@ public class ProductDto {
 		this.mno = mno;
 		this.imgList = imgList;
 		this.mid = mid;
+	}
+
+	
+	// 제품등록용 생성자
+	public ProductDto(int pcno, String pname, String pcontent, int pprice, String plat, String plng, int mno,
+			Map<Integer, String> imgList) {
+		super();
+		this.pcno = pcno;
+		this.pname = pname;
+		this.pcontent = pcontent;
+		this.pprice = pprice;
+		this.plat = plat;
+		this.plng = plng;
+		this.mno = mno;
+		this.imgList = imgList;
 	}
 
 	

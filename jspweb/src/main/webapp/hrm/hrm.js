@@ -54,7 +54,7 @@ function registRation(){
 	processData : false ,
 	success : function f(r){
 		console.log('통신성공')
-		console.log(status);
+		console.log(statuss);
 		
 		if(r==true){ 
 			alert('직원등록 성공했습니다.')
