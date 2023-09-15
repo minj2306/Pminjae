@@ -3,6 +3,8 @@ package model.dao;
 
 
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.dto.ProductDto;
 
@@ -66,7 +68,36 @@ public class ProductDao extends Dao {
 		return false;
 	}
 	
-	// 2. 제품 전체 출력
+	// 2. 제품 전체 출력 
 	
-	// 3. 
+	// 제품 최신순 출력 
+	public List<ProductDto> findByTop ( int count ){
+		
+		return null;
+		
+	}
+	
+	// 제품 범위만큼 출력
+	public List<ProductDto> findByLatLng( String east , String west , String south , String north ){
+		
+		return null;
+	}
+	
+	// 제품 개별 출력
+	public ProductDto findByPno( int pno ) {
+		
+		return null;
+	}
+	
+	// 관리자 출력
+	public List<ProductDto> findByAll( ){
+		
+		return null;
+	}
+	
+	// 3. 제품 개별 조회 
+		
+	// 4. 제품 수정 
+		
+	// 5. 제품 삭제 
 }

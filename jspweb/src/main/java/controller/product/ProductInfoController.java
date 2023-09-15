@@ -2,6 +2,7 @@ package controller.product;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -13,12 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.dsig.XMLObject;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -136,8 +139,54 @@ public class ProductInfoController extends HttpServlet {
 	// 2. 제품 조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String type = request.getParameter("type");
+		
+		String json = "";
+		
+		ObjectMapper mapper = new ObjectMapper();  
+		
+		if( type.equals("findByTop") ) {
+			
+			int count = Integer.parseInt(request.getParameter("count"));
+			
+			List<ProductDto> result = ProductDao.getinstance().findByTop(count);
+			
+			json = mapper.writeValueAsString(result);
+			
+		}
+		else if( type.equals("findByLatLng") ) {
+			
+			String east = request.getParameter("east");
+			String west = request.getParameter("west");
+			String south = request.getParameter("south");
+			String north = request.getParameter("north");
+			
+			List<ProductDto> result = ProductDao.getinstance().findByLatLng(east, west, south, north);
+		
+			json = mapper.writeValueAsString(result);
+			
+		}
+		else if( type.equals("findByPno") ) {
+			
+			int pno = Integer.parseInt(request.getParameter("pno"));
+			
+			ProductDto result = ProductDao.getinstance().findByPno(0);
+			
+			json = mapper.writeValueAsString(result);
+			
+		}
+		else if( type.equals("findByAll") ) {
+			
+			
+			List<ProductDto> result = ProductDao.getinstance().findByAll();
+			
+			json = mapper.writeValueAsString(result);
+			
+		}
+	
+		response.setCharacterEncoding("application/json;charset=UTF-8");;
+		response.getWriter().print(json);
 	}
 
 	// 3. 제품 수정

@@ -7,6 +7,7 @@ if(loginState == false){
 }
 
 
+
 function onRegister(){
 	
 	//1. form dom 객체 호출 
