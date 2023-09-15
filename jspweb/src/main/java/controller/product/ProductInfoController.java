@@ -160,7 +160,7 @@ public class ProductInfoController extends HttpServlet {
 			String east = request.getParameter("east");
 			String west = request.getParameter("west");
 			String south = request.getParameter("south");
-			String north = request.getParameter("north");
+			String north = request.getParameter("north"); 
 			
 			List<ProductDto> result = ProductDao.getinstance().findByLatLng(east, west, south, north);
 		
