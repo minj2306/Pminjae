@@ -166,7 +166,7 @@ public class ProductInfoController extends HttpServlet {
 		
 			json = mapper.writeValueAsString(result);
 			
-		}
+		} 
 		else if( type.equals("findByPno") ) {
 			
 			int pno = Integer.parseInt(request.getParameter("pno"));
