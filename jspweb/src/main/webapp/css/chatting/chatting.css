@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* 채팅 전체구역 */
+.chatbox{
+	width: 40%;
+	margin: 20px auto ;
+	box-shadow: 1px 1px 1px red;
+	/* 구역 그림자 : x축 y축 그림자 흐림정도 색상 */
+}
+
+/* 채팅 내용 목록 */
+.chatcont{
+	height: 650px; background-color: #BACEE0;
+	padding: 20px;
+	/* 만약에 내용물이 구역보다 커졌을때 */
+	overflow-y: scroll; /* y 축 스크롤 */
+}
+
+/* 채팅 입력창 , 전송버튼 구역 */
+.chatbottom{
+	height: 50px; display: flex;
+}
+
+
+.chatbottom textarea {/* 채팅 입력창 */
+	width: 80%;
+	border: 1px solid #e8e8e8;
+	padding: 15px; resize: none;
+}
+
+.chatbottom button {/* 전송버튼 */
+	width: 20%;
+	border: none;
+	border-radius: 5px;
+	background-color: #FFEB33;  
+}
+
+/* 채팅 목록 */
+/* 보냇을때 오른쪽*/
+.rcont{
+	display: flex;
+	justify-content: flex-end; /* 오른쪽 배치 */
+	margin: 10px 10px;
+}
+
+.rcont .content{
+	background-color: #FFEB33;
+}
+
+.rcont .subcont{
+	 justify-content: flex-end;
+}
+
+.lcont{
+	display: flex;
+	justify-content: flex-start;
+	margin: 10px 0px;
+}
+
+.lcont .content{
+	background-color: #FFFFFF;
+}
+
+.lcont .pimg{
+	width: 35px;
+	height: 35px;
+	border-radius: 50px;
+	margin-right: 8px;
+}
+
+.subcont{/* 메시지 시간 */
+	display: flex;
+	align-items: flex-end;
+}
+
+.content{/* 메세지 내용 */
+	padding: 10px; border-radius: 5px;
+	max-width: 80%; 
+	word-break: break-all; 
+}
+
+.date{/* 메시지 시간 */
+	font-size: 10px; margin: 0px 5px;
+}
+
+
+.alarm{/* 알림 메시지 */
+	background-color: #B1C3D5;
+	width: 70%;
+	margin: 20px auto;
+	text-align: center;
+	border-radius: 10px;
+	padding: 8px;	
+}
+
+/* -------------------------이모티콘 구역------------------------- */
+.dropdown .emobtn {
+	font-size: 25px; /* 폰트어썸 아이콘 크기 변경 */
+	background-color: transparent;/* 투명색 */
+	border: none;
+	margin: 5px 20px;
+}
+
+/* 드롭다운시 보이는 구역 */
+.emolistbox{
+	width: 300px; 
+	height: 300px;
+	overflow-y: scroll;
+}
+
+.dropdown .emolistbox img{
+	width: 60px;
+}
+
+
+
+
+
+

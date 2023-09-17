@@ -73,3 +73,50 @@ create table board(
                     foreign key(mno) references member (mno) on delete cascade , -- 회원탈퇴시 게시물도 같이 삭제 [ 제약조건 ]
                     foreign key(bcno) references bcategory(bcno) on delete cascade on update cascade -- 카테고리 삭제시 게시물도 삭제 , 카테고리번호 변경시 fk도 같이 변경
                     );
+                    
+#--------------------------------제품--------------------------------------------------------
+
+#제품 카테고리 테이블
+
+use jspweb;
+#pk[ 상위 ] 테이블 먼저 생성
+
+# 1. 제품 카테고리
+drop table if exists pcategory;
+create table pcategory(
+					  pcno int auto_increment ,
+                      pcname varchar(100) not null ,
+                      primary key(pcno)
+					 );
+# 샘플
+insert into pcategory( pcname ) values( '노트북' );
+insert into pcategory( pcname ) values( '테블릿' );
+insert into pcategory( pcname ) values( '냉장고' );
+
+# 2. 제품
+drop table if exists product;
+create table product(
+					pno int auto_increment ,
+                    pname varchar(100) not null ,
+                    pcontent longtext ,
+                    pprice int unsigned , # signed( 기본값 : 음수사용 +-21억 ) / unsigned ( 음수사용 x - 음수만큼읨 메모리를 양수로 사용 0~42억 정도 ) : 음수 사용 여부 
+					pstate tinyint default 0 , # [ 0 : 판매중(기본값) , 1: 거래중 , 2: 판매대기 3. 판매완료 ]
+                    pdate datetime default now() ,
+                    plat varchar(30) ,
+                    plng varchar(30) ,
+                    pcno int ,
+                    mno int ,
+                    primary key(pno) ,
+                    foreign key(pcno) references pcategory(pcno) on delete set null on update cascade ,
+                    foreign key(mno) references member (mno) on delete set null on update cascade
+                    );
+                    
+# 3. 제품 사진
+drop table if exists productimg;
+create table productimg(
+						pimgno int auto_increment ,
+                        pimg longtext ,
+                        pno int ,
+                        primary key(pimgno) ,
+                        foreign key (pno) references product (pno) on delete cascade on update cascade 
+                        );

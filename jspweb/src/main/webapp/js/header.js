@@ -3,7 +3,7 @@
 let 헤더변수 = "헤더변수 데이터";
 
 let loginState = false; /*로그인 상태 true 로그인중  false 비로그인*/
-
+let loginMid = '';
 getMemberinfo()
 function getMemberinfo(){
 	
@@ -13,6 +13,7 @@ function getMemberinfo(){
 	$.ajax({
 	url : "/jspweb/MemberInfoController",
 	method : "get",
+	async : false , /* 비동기화(기본값 true) , 동기화 false 설정하는 속성 */
 	data : {type : "info"} ,
 	success : function f(r){
 		
@@ -20,7 +21,7 @@ function getMemberinfo(){
 		let html = ``;
 
 		if(r==null){//비로그인
-			loginState = false;
+			loginState = false; loginMid = '';
 			html +=`
 					<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a> </li>
 					<li> <a href="/jspweb/member/login.jsp">로그인</a></li>
@@ -29,7 +30,7 @@ function getMemberinfo(){
 			
 		}
 	 	else{//로그인
-			loginState = true;
+			loginState = true; loginMid = r.mid;
 			html += `
 					<li> <a href="#">${r.mid} 님</a></li>
 					<li> <img class="himg" alt="" src="/jspweb/member/img/${r.mimg}"></li>
