@@ -111,7 +111,7 @@ function getList( page ){
 		html = ``;
 		//페이지 개수만큼 페이징 번호 구성
 			// 이전 버튼 [page <=1 ? page : page-1 : 만약에 1페이지에서 이전버튼 클릭시 1페이지로 고정하고 아니면 1 차감]
-		html += `<button onclick="getList(${ page <= 1 ? page : -1})"  type="button"> < </button>`
+		html += `<button onclick="getList(${ page <= 1 ? page : page-1})"  type="button"> < </button>`
 			//페이지 번호 버튼	
 		for(let i = r.startbtn; i <= r.endbtn ; i++){
 		// 만약에 현재페이지와 i번째 페이지와 일치하면 버튼 태그에 class="selectpage" 추가
