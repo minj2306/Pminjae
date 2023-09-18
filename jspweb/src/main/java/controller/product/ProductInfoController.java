@@ -171,7 +171,7 @@ public class ProductInfoController extends HttpServlet {
 			
 			int pno = Integer.parseInt(request.getParameter("pno"));
 			
-			ProductDto result = ProductDao.getinstance().findByPno(0);
+			ProductDto result = ProductDao.getinstance().findByPno(pno);
 			
 			json = mapper.writeValueAsString(result);
 			
@@ -185,7 +185,7 @@ public class ProductInfoController extends HttpServlet {
 			
 		}
 	
-		response.setCharacterEncoding("application/json;charset=UTF-8");;
+		response.setContentType("application/json;charset=UTF-8");;
 		response.getWriter().print(json);
 	}
 

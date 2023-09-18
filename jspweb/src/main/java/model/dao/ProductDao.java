@@ -2,9 +2,13 @@ package model.dao;
 
 
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.dto.ProductDto;
 
@@ -70,27 +74,143 @@ public class ProductDao extends Dao {
 	
 	// 2. 제품 전체 출력 
 	
-	// 제품 최신순 출력 
-	public List<ProductDto> findByTop ( int count ){
-		
+	// 0. 
+	public Map<Integer, String > getProductImg( int pno ){
+	
+		try {
+			
+			Map<Integer, String> imglist = new HashMap<>();
+			
+			String sql = "select * from productimg where pno = "+ pno;
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				imglist.put( rs.getInt("pimgno") , rs.getString("pimg") );
+			}
+			return imglist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return null;
-		
 	}
 	
-	// 제품 범위만큼 출력
-	public List<ProductDto> findByLatLng( String east , String west , String south , String north ){
-		
-		return null;
-	}
-	
-	// 제품 개별 출력
+	// 3. 선택된 제품 번호에 해당하는 제품 출력함수
 	public ProductDto findByPno( int pno ) {
 		
+		try {
+			
+			String sql = "select * from product p natural join pcategory pc natural join member m where p.pno = "+pno;
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				ProductDto productDto = new ProductDto(
+						rs.getInt("pcno") , rs.getString("pcname") ,
+						rs.getInt("pno") , rs.getString("pname") ,
+						rs.getString("pcontent") , rs.getInt("pprice") ,
+						rs.getInt("pstate") , rs.getString("pdate") ,
+						rs.getString("plat") , rs.getString("plng") ,
+						rs.getInt("mno") , getProductImg( rs.getInt("pno") ) ,
+						rs.getString("mid")
+						);
+				return productDto;
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+		
+	}
+	
+	// 1. N개 제품들을 최신순으로 출력함수 
+	public List<ProductDto> findByTop ( int count ){
+		
+		List<ProductDto> list = new ArrayList<>(); 
+		
+		try {
+		
+			String sql = "select * from product order by pdate desc limit "+ count;
+			
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				list.add( findByPno( rs.getInt("pno") ) );
+			}
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+		
+	}
+	
+	// 2. 현재 카카오지도 내 보고있는 동서남북 기준 내 제품들을 출력함수
+	public List<ProductDto> findByLatLng( String east , String west , String south , String north ){
+
+		List<ProductDto> list = new ArrayList<>(); 
+
+		try { //제품의 경도가 '동쪽' 보다 작고 경도가 '서쪽' 보다 크고 위도가 '남쪽' 보다 작고 '북쪽' 보다 크다.
+			
+				// 동 경도보다 크고 서 경도보다 작고 남 위도보다 크고 북 위도보다 작고
+			String sql = "select * from product where "
+						 +"plat <= ? and "
+						 +"plat >= ? and "
+						 +"plng >= ? and "
+						 +"plng <= ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, east);
+			ps.setString(2, west);
+			ps.setString(3, south);
+			ps.setString(4, north);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				list.add( findByPno( rs.getInt("pno") ) );
+			}
+			return list;
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return null;
 	}
 	
-	// 관리자 출력
+
+	
+	// 4. 관리자 출력
 	public List<ProductDto> findByAll( ){
+		
+		List<ProductDto> list = new ArrayList<>(); 
+		
+		try {
+			
+			String sql = "select * from product";
+
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				list.add( findByPno( rs.getInt("pno") ) );
+			}
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		
 		return null;
 	}
