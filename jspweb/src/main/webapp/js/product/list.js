@@ -81,7 +81,9 @@ function getInfo() {
 
 //2 현재 카카오지도내 보고있는 동서남북 기준내 제품들을 출력함수
 function findByLatLng( east , west , south , north ){
-
+	
+	clusterer.clear(); // *클러스터 내 모든 마커를 초기화 
+	
 	$.ajax({
 	url : "/jspweb/ProductInfoController",
 	async : false , /* ajax 통신은 기본적으로 [비동기 통신 async : true] / [동기통신 async : false] */
@@ -94,6 +96,7 @@ function findByLatLng( east , west , south , north ){
 			 } ,
 	success : jsonArray => { console.log(jsonArray)
 		
+		//
 		var markers = jsonArray.map( (p) => {
 		      
 		        return new kakao.maps.Marker({
@@ -101,6 +104,44 @@ function findByLatLng( east , west , south , north ){
 		        });
 		    });
 			clusterer.addMarkers(markers);
+			
+			//----------------------------------------------------------
+			
+			let sidebar = document.querySelector('.sidebar');
+			let html = ``;
+			
+				jsonArray.forEach( (p) => {
+					
+					html += `
+							<div class="card mb-3" style="max-width: 540px;">
+							  <div class="row g-0">
+							    
+							    <div class="col-md-5">
+							     <a href="/jspweb/product/view.jsp?pno=${p.pno}">
+							      <img style="max-width: 200px;" src="/jspweb/product/img/${Object.values(p.imgList)[0]}" class="img-fluid rounded-start" alt="...">
+							     </a>
+							    </div>
+							    
+							    <div class="col-md-7">
+							      <div class="card-body">
+							        <h5 class="card-title">${p.pname}</h5>
+							        <p class="card-text">
+							        	<div>
+							        		${p.pcontent}
+							        	</div>
+							        	<div>
+							        		${p.pprice.toLocaleString()} 원
+							        	</div>
+							        </p>
+							      </div>
+							    </div>
+				
+							  </div>
+							</div>
+							`
+				})
+			
+				sidebar.innerHTML = html;
 	 } ,
 	error : e =>{}
 	})
