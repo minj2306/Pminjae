@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* 1. input checkbox 늘리기 */
+.checkbox{
+	zoom : 10; /* 배율 1->100% */
+}
+
+/* 2. 개별삭제버튼 */
+.table button{
+	border: none;
+	font-size: 20px;
+	background-color: transparent;
+}
+
+
+.selectbtn button{
+	width: 10%;
+	margin: 5px;
+}
+
+/* 구매버튼 */
+.buybtn{
+	display: flex;
+	justify-content: center;
+}
+
+.buybtn button{
+	width: 20%; margin: 10px; height: 50px;
+	background-color: black; color: white;
+	border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

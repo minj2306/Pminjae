@@ -34,6 +34,7 @@ function getMemberinfo(){
 			html += `
 					<li> <a href="#">${r.mid} 님</a></li>
 					<li> <img class="himg" alt="" src="/jspweb/member/img/${r.mimg}"></li>
+					<li> <a href="/jspweb/product/wishlist.jsp">찜목록</a></li>
 					<li> <a href="/jspweb/member/info.jsp">마이페이지</a></li>
 					<li> <a onclick="logout()" href="#">로그아웃</a></li>
 					`;		

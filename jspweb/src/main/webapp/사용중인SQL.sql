@@ -120,3 +120,12 @@ create table productimg(
                         primary key(pimgno) ,
                         foreign key (pno) references product (pno) on delete cascade on update cascade 
                         );
+
+# 찜하기
+drop table if exists pwishlist;
+create table pwishlist(
+						mno int not null ,
+                        pno int not null ,
+                        foreign key(mno) references product(mno) on delete cascade on update cascade , -- 회원이 탈퇴하면 찜하기 목록 같이 삭제
+                        foreign key(pno) references product(pno) on delete set null on update cascade -- 제품이 삭제되면 찜하기 목록에서 없는 제품으로 표시하기 위한 null 대입
+						);

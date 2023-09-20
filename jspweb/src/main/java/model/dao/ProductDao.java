@@ -214,10 +214,85 @@ public class ProductDao extends Dao {
 		
 		return null;
 	}
+ 
+	// 제품 찜하기 등록(=찜하기상태가 아닐떄 = 레코드가 없을떄) / 취소(=찜하기 상태일때 = 조건에 따른 레코드가 있을때
+	public boolean setWish( int mno , int pno) {
+		
+		try {
+			
+			String sql = getWish(mno , pno) ?  
+							"delete from pwishlist where mno = ? and pno = ?" :
+								"insert into pwishlist values( ? , ? ) ";
+					
+			
+			
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			
+			int count = ps.executeUpdate();
+			
+			if( count == 1) {
+				return true;
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("setWish : " + e);
+		}
+		return false;
+	}
+		
+	// 제품 찜하기 상태 출력
+	public boolean getWish( int mno , int pno ){
+		
+		try {
+			
+			String sql = "select * from pwishlist where mno = ? and pno = ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println( "getWish" + e);
+		}
+		
+		return false;
+		
+	}
 	
-	// 3. 제품 개별 조회 
+	// 현재 로그인된 회원의 찜한 제품[여러개] 정보를 출력하는 함수
+	public List<ProductDto> getWishProductList( int mno ){
 		
-	// 4. 제품 수정 
+		List<ProductDto> list = new ArrayList<>();
 		
-	// 5. 제품 삭제 
+		try {
+			
+			String sql = "select pno from pwishlist where mno = " + mno; // 현재 회원의 찜하기 제품번호 목록 찾기
+			
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			//현재 회원이 찜한 제품번호의 레코드 반환
+				// 찾은 제품번호 하나씩 findByPno() 함수에게 전달해서 제품정보를 list 담기
+			while (rs.next() ) {
+				list.add( findByPno( rs.getInt("pno") ) );
+			}
+			return list;
+		} catch (Exception e) {
+			System.out.println( "getWishProductList" + e);
+		}
+		return list;
+	}
+	
 }

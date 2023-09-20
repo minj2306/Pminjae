@@ -46,7 +46,7 @@
 			<div class="pprice"></div>
 			<div class="pcontent"></div>
 			<div class="etcbtnbox">
-				<button type="button">찜하기S2</button>
+				<button onclick="setWish()" type="button">찜하기 <span class="wish"></span> </button>
 				<button type="button">바로구매</button>
 			</div>
 			

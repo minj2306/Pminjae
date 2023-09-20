@@ -42,3 +42,57 @@ function findByPno(){
 	})
 	
 }
+
+// 2. 찜하기 등록 [ 비회원제 : ip 주소/ 디바이스 식별변호 , 회원제 : header.js ]
+function setWish(){
+			
+		if( loginState == false ){
+			alert('로그인 후 가능한 기능입니다.'); return;
+		}
+			
+		$.ajax({
+		url : "/jspweb/PwishListController",
+		method : "post",
+		data : { pno : pno } ,
+		async : false ,
+		success : r => {
+			console.log(r);
+			if(r == true){
+				getWish();
+			}
+			else{
+				
+			}
+		} ,
+		error : e =>{}
+		})	
+	
+}
+
+getWish()
+// 3.찜하기 상태 호출
+function getWish(){
+	
+	let wish = document.querySelector('.wish');
+	
+	if( loginState == false ){
+		wish.innerHTML = '♡';
+	}
+	
+	$.ajax({
+		url : "/jspweb/PwishListController",
+		method : "get",
+		data : { pno : pno } ,
+		async : false ,
+		success : r => {
+			console.log(r);
+			if(r==true){
+				wish.innerHTML = '♥';
+			}
+			else{
+				wish.innerHTML = '♡';
+			}
+		} ,
+		error : e =>{}
+		})	
+}
