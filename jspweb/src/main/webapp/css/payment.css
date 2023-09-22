@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+
+.wrap{
+	margin: 0 auto;
+	width: 700px;
+	border: 3px ridge #ACACAC;
+}
+
+.paymenthaeder{
+	height: 40px;
+	background-color: #010072;
+	color: white;
+	border: 1px solid #ACACAC;
+	padding-left: 5px;
+	line-height: 40px;
+	font-size: 20px;
+}
+
+.patmentspc{
+	width: 100%;
+	padding-top : 10px;
+	padding-left : 10px;
+	background-color: #ACACAC;
+	font-size: 20px;
+
+}
+
+.amountselect{
+	margin: 50px 0px 50px 0px;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.amountselect button {
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	border-style: ridge;
+	background-color: #ACACAC;
+	width : 100px;
+	height : 30px;
+	font-size: 15px;
+}
+
+.methodselect{
+	margin: 0px 0px 50px 0px;
+		width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.methodselect button{
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	border-style: ridge;
+	background-color: #ACACAC;
+	width : 150px;
+	height : 30px;
+	font-size: 15px;
+}
+
+.finalbtn{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.paybtn{
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	border-style: ridge;
+	background-color: #ACACAC;
+	width : 50%;
+	height : 30px;
+	font-size: 15px;
+	margin: 0px 0px 50px 0px;
+}
